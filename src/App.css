@@ -36,3 +36,97 @@
     transform: rotate(360deg);
   }
 }
+
+body, html, #root, .homepage-bg {
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #1a2340 60%, #232b3b 100%);
+  color: #fff;
+}
+
+.homepage-bg {
+  min-height: 100vh;
+  width: 100vw;
+  background: url('') center/cover no-repeat, linear-gradient(120deg, #1a2340 60%, #232b3b 100%);
+}
+
+.services-section {
+  padding: 2em 2em 0 2em;
+}
+.services-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  justify-content: center;
+}
+
+.mentorship-section {
+  padding: 2.5em 2em 0 2em;
+  text-align: center;
+}
+.mentorship-section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+.mentorship-section p {
+  color: #e6eaf8;
+  margin-bottom: 2em;
+}
+.mentorship-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  justify-content: center;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 3em 2em 2em 2em;
+}
+.cta-section h2 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+}
+.cta-section p {
+  color: #e6eaf8;
+  margin-bottom: 1.5em;
+}
+
+@media (max-width: 1100px) {
+  .hero-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hero-image, .hero-content {
+    max-width: 100%;
+  }
+}
+@media (max-width: 800px) {
+  .services-grid, .mentorship-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .blank-image {
+    width: 90vw;
+    max-width: 320px;
+    height: 220px;
+  }
+}
+@media (max-width: 500px) {
+  .hero-content h1 {
+    font-size: 1.3rem;
+  }
+  .mentorship-section h2, .cta-section h2 {
+    font-size: 1.1rem;
+  }
+  .blank-image {
+    width: 90vw;
+    height: 120px;
+  }
+}

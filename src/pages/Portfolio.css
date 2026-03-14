@@ -1,0 +1,91 @@
+.portfolio-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px 0 20px;
+  color: #fff;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.portfolio-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #e0e0e0;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.portfolio-card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.25);
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.35);
+}
+
+.portfolio-loadmore {
+  display: block;
+  margin: 32px auto 0 auto;
+  padding: 0.75rem 2.5rem;
+  background: linear-gradient(90deg, #3a4a7a 0%, #2b3467 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
+  transition: background 0.2s;
+}
+
+.portfolio-loadmore:hover {
+  background: linear-gradient(90deg, #4b5c9a 0%, #3a4a7a 100%);
+}
+
+.portfolio-idea-section {
+  margin: 64px auto 0 auto;
+  text-align: center;
+}
+
+.portfolio-idea-section h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.portfolio-startproject {
+  padding: 0.9rem 2.5rem;
+  background: linear-gradient(90deg, #ffd86b 0%, #ffb800 100%);
+  color: #222;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
+  transition: background 0.2s;
+}
+
+.portfolio-startproject:hover {
+  background: linear-gradient(90deg, #ffe28a 0%, #ffd86b 100%);
+}

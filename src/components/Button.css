@@ -1,0 +1,28 @@
+.custom-btn {
+  padding: 0.7em 2em;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  margin: 0 0.5em 0.5em 0;
+}
+.custom-btn.primary {
+  background: linear-gradient(90deg, #3b6ef6, #4f8cff);
+  color: #fff;
+}
+.custom-btn.secondary {
+  background: #232b3b;
+  color: #fff;
+  border: 1px solid #3b6ef6;
+}
+.custom-btn.cta {
+  background: linear-gradient(90deg, #ffd86b, #ffb800);
+  color: #232b3b;
+  font-size: 1.2rem;
+  min-width: 200px;
+}
+.custom-btn:active {
+  opacity: 0.85;
+}

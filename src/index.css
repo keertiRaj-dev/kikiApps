@@ -1,13 +1,113 @@
-body {
+:root {
+  --primary: #FF5A24;
+  --background: #000000;
+  --purple: #6E4C73;
+  --text: #F2F2F2;
+  --accent: #8E6FA6;
+  --bg-purple: #6E4F78;
+  --accent-orange: #F24E1E;
+  --black: #000000;
+  --text-main: #E6DCEB;
+  --text-muted: #C9B8D3;
+}
+
+body, html {
+  overflow-x: hidden;
+  width: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+
+#root, .App {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.navbar, .portfolio-container {
+  max-width: 100vw;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Use color variables for all main elements */
+#root {
+  background: var(--background);
+  color: var(--text);
+}
+
+nav, .navbar, .navbar-container {
+  background: var(--primary) !important;
+  color: #fff !important;
+}
+
+.navbar a, .navbar a:visited {
+  color: #fff !important;
+}
+
+.navbar a:hover {
+  color: var(--accent-orange) !important;
+}
+
+button, .btn, .about-contact-btn, .about-btn-primary, .about-btn-secondary {
+  background: var(--primary) !important;
+  color: var(--text) !important;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+button:hover, .btn:hover, .about-contact-btn:hover, .about-btn-primary:hover, .about-btn-secondary:hover {
+  background: var(--accent) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary);
+}
+
+a, .navbar a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover, .navbar a:hover {
+  color: var(--primary);
+}
+
+.card, .about-work-card, .mentorship-card, .portfolio-card {
+  background: var(--purple);
+  color: var(--text-main);
+  border: 1.5px solid var(--accent);
+  border-radius: 16px;
+}
+
+.services-section, .mentorship-section {
+  padding: 40px 0 0 0;
+}
+
+.mentorship-section h2, .services-section h2 {
+  color: var(--accent-orange);
+}
+
+/* Utility classes for backgrounds */
+.bg-primary { background: var(--primary) !important; color: var(--text) !important; }
+.bg-accent { background: var(--accent) !important; color: var(--text) !important; }
+.bg-purple { background: var(--purple) !important; color: var(--text) !important; }
+.bg-background { background: var(--background) !important; color: var(--text) !important; }
+
+.navbar .navbar-logo, .navbar .navbar-title, .navbar .kiki-apps {
+  cursor: pointer;
 }

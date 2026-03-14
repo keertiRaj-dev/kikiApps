@@ -1,0 +1,172 @@
+:root {
+  --primary: #FF5A24;
+  --background: #000000;
+  --purple: #6E4C73;
+  --text: #F2F2F2;
+  --accent: #8E6FA6;
+}
+
+/* Cosmic/starry background removed, applied to body instead */
+
+/* Apply cosmic background to body for full coverage */
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.about-main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px 40px 20px;
+  color: var(--text);
+  position: relative;
+  z-index: 1;
+}
+
+.about-profile-section {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.about-profile-img {
+  width: 270px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.25);
+  background: #222;
+}
+
+.about-profile-info h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.about-profile-info h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+
+.about-profile-desc {
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.about-contact-btn {
+  padding: 0.8rem 2.5rem;
+  background: var(--primary);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.18);
+  transition: background 0.2s;
+}
+
+.about-contact-btn:hover {
+  background: var(--accent);
+}
+
+.about-section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1.5rem 0;
+  text-align: center;
+  letter-spacing: 1px;
+  color: var(--primary);
+}
+
+.about-work-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.about-work-card {
+  background: var(--purple);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.18);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  min-width: 260px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  border: 1.5px solid var(--accent);
+}
+
+.about-work-logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  letter-spacing: 1px;
+  background: var(--accent);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1.1rem;
+  color: var(--text);
+}
+
+.about-work-logo.publicis {
+  background: var(--primary);
+  color: var(--text);
+}
+.about-work-logo.victoria {
+  background: var(--accent);
+  color: var(--text);
+  font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+}
+.about-work-logo.harman {
+  background: var(--purple);
+  color: var(--primary);
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-size: 1.1rem;
+}
+
+.about-work-role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.about-work-tech {
+  font-size: 1rem;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+
+.about-work-duration {
+  font-size: 0.98rem;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .about-profile-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .about-work-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

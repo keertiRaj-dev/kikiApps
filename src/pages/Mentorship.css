@@ -1,0 +1,171 @@
+.mentorship-bg {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #23234a 0%, #23234a 60%, #22223b 100%);
+  color: #fff;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  padding-bottom: 40px;
+}
+.mentorship-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 16px 0 16px;
+}
+.mentorship-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+.mentorship-subtitle {
+  font-size: 1.25rem;
+  color: #c9c9e0;
+  text-align: center;
+  margin-bottom: 2.5em;
+}
+.mentorship-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+  margin-bottom: 2.5em;
+}
+.mentorship-card {
+  background: #29295aee;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px #0002;
+  padding: 0 0 2em 0;
+  min-width: 320px;
+  max-width: 370px;
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.mentorship-card-header {
+  background: linear-gradient(90deg, #3b4cca 0%, #23234a 100%);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  width: 100%;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+  padding: 1em 0;
+  margin-bottom: 0.5em;
+}
+.mentorship-card-img {
+  width: 100%;
+  height: 140px;
+  background: #23234a url('https://placehold.co/350x140/23234a/fff?text=Image') center/cover no-repeat;
+  border-radius: 0 0 0 0;
+  margin-bottom: 1em;
+}
+.mentorship-img-1 {
+  background-image: url('https://placehold.co/350x140/23234a/fff?text=1:1+Mentorship');
+}
+.mentorship-img-2 {
+  background-image: url('https://placehold.co/350x140/23234a/fff?text=Group+Webinar');
+}
+.mentorship-list {
+  list-style: none;
+  padding: 0 1.5em;
+  margin: 0 0 1.5em 0;
+  width: 100%;
+}
+.mentorship-list li {
+  font-size: 1.08rem;
+  color: #fff;
+  margin-bottom: 0.7em;
+  position: relative;
+  padding-left: 1.5em;
+}
+.mentorship-list li:before {
+  content: '✔';
+  color: #3b4cca;
+  position: absolute;
+  left: 0;
+  font-size: 1.1em;
+}
+.mentorship-btn {
+  background: #3b4cca;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.08rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7em 2.2em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s;
+}
+.mentorship-btn:hover {
+  background: #23234a;
+}
+.mentorship-impact-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 2.5em 0 1em 0;
+  font-weight: 600;
+}
+.mentorship-impact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+  margin-bottom: 2.5em;
+}
+.impact-card {
+  background: #23234aee;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #0002;
+  padding: 1.2em 2em;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.impact-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.impact-icon {
+  font-size: 1.3em;
+}
+.impact-label {
+  color: #bfc2e2;
+  font-size: 1rem;
+  text-align: center;
+}
+.mentorship-cta {
+  text-align: center;
+  margin-top: 2.5em;
+}
+.mentorship-cta h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.2em;
+}
+.mentorship-getstarted-btn {
+  background: linear-gradient(90deg, #ffe066 0%, #ffd43b 100%);
+  color: #23234a;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8em 2.5em;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s;
+}
+.mentorship-getstarted-btn:hover {
+  background: linear-gradient(90deg, #ffd43b 0%, #ffe066 100%);
+}
+@media (max-width: 800px) {
+  .mentorship-cards, .mentorship-impact-cards {
+    flex-direction: column;
+    gap: 1em;
+  }
+}
