@@ -1,56 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Mentorship.css';
+import MentorshipDetailsPopup from '../components/MentorshipDetailsPopup';
 
-const Mentorship = () => (
-  <div className="mentorship-bg">
-    <div className="mentorship-container">
-      <h1 className="mentorship-title">Frontend Career Mentorship</h1>
-      <p className="mentorship-subtitle">Helping developers land frontend jobs<br />and grow in their career</p>
-      <div className="mentorship-cards">
-        <div className="mentorship-card">
-          <div className="mentorship-card-header">1:1 Mentorship</div>
-          <div className="mentorship-card-img mentorship-img-1" />
-          <ul className="mentorship-list">
-            <li>Resume Review</li>
-            <li>LinkedIn Optimization</li>
-            <li>Mock Interviews</li>
-            <li>Career Guidance</li>
-          </ul>
-          <button className="mentorship-btn">Book 1:1 Session</button>
+const Mentorship = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  return (
+    <div className="mentorship-bg">
+      <div className="mentorship-main-container">
+        <h1 className="mentorship-title">
+          Land Your Next Job <span className="mentorship-title-accent">Faster</span>
+        </h1>
+        <p className="mentorship-subtitle">
+          Personal mentorship and real interview preparation to help you get hired.
+        </p>
+        <div className="mentorship-cards-row">
+          {/* 1:1 Mentorship Card */}
+          <div className="mentorship-card neon-card">
+            <div className="mentorship-most-popular">Most Popular</div>
+            <div className="mentorship-card-header mentorship-card-header-star">
+              1:1 Mentorship <span className="mentorship-star">⭐</span>
+            </div>
+            <ul className="mentorship-list mentorship-list-left">
+              <li><span className="mentorship-list-icon">📄</span> <b>ATS Optimized</b> Resume Review</li>
+              <li><span className="mentorship-list-icon">🔗</span> LinkedIn & Portfolio Improvement</li>
+              <li><span className="mentorship-list-icon">🗣️</span> Mock Interviews with Feedback</li>
+              <li><span className="mentorship-list-icon">❓</span> Previously Asked Interview Questions</li>
+              <li><span className="mentorship-list-icon">💡</span> Confidence Building & Career Guidance</li>
+            </ul>
+            <button className="mentorship-btn mentorship-btn-primary">Book 1:1 Session</button>
+            <button className="mentorship-btn mentorship-btn-secondary" onClick={() => setShowPopup(true)}>My Details</button>
+          </div>
+          {/* Group Webinar Card */}
+          <div className="mentorship-card neon-card">
+            <div className="mentorship-cheapest-badge">Cheapest</div>
+            <div className="mentorship-card-header">Group Webinar <span role="img" aria-label="group" className="mentorship-group-emoji">👥</span></div>
+            <ul className="mentorship-list mentorship-list-right">
+              <li><span className="mentorship-list-icon">🎯</span> Strategic Job Hunting</li>
+              <li><span className="mentorship-list-icon">⚡</span> Efficient Job Applications</li>
+              <li><span className="mentorship-list-icon">🌐</span> Current Job Market Insights</li>
+              <li><span className="mentorship-list-icon">📝</span> Interview Preparation</li>
+              <li><span className="mentorship-list-icon">🗣️</span> Confidence & Communication</li>
+            </ul>
+            <button className="mentorship-btn mentorship-btn-primary">Join Next Webinar</button>
+            <button className="mentorship-btn mentorship-btn-secondary">View Details</button>
+          </div>
         </div>
-        <div className="mentorship-card">
-          <div className="mentorship-card-header">Group Webinars</div>
-          <div className="mentorship-card-img mentorship-img-2" />
-          <ul className="mentorship-list">
-            <li>Frontend Roadmap</li>
-            <li>React Interview Questions</li>
-            <li>Job Hunt Strategy</li>
-            <li>Real Interview Experiences</li>
-          </ul>
-          <button className="mentorship-btn">Join Next Webinar</button>
+        {/* Bottom Section */}
+        <div className="mentorship-bottom-section">
+          <h2 className="mentorship-bottom-title">
+            Ready to Get Your First Frontend <span className="mentorship-title-accent">Job?</span>
+          </h2>
+          <p className="mentorship-bottom-subtitle">
+            Join mentorship and start preparing like a real developer.
+          </p>
+          <div className="mentorship-impact-row">
+            <div className="mentorship-impact-item">
+              <span className="mentorship-impact-icon">👨‍💻</span>
+              <span className="mentorship-impact-value">40+</span>
+              <span className="mentorship-impact-label">Developers Mentored</span>
+            </div>
+            <div className="mentorship-impact-item">
+              <span className="mentorship-impact-value">150+</span>
+              <span className="mentorship-impact-label">Interviews Given</span>
+            </div>
+            <div className="mentorship-impact-item">
+              <span className="mentorship-impact-value">5+</span>
+              <span className="mentorship-impact-label">Years in Frontend</span>
+            </div>
+          </div>
         </div>
       </div>
-      <h2 className="mentorship-impact-title">My Mentorship Impact</h2>
-      <div className="mentorship-impact-cards">
-        <div className="impact-card">
-          <div className="impact-value">1 120+ <span className="impact-icon">👥</span></div>
-          <div className="impact-label">Developers Mentored</div>
-        </div>
-        <div className="impact-card">
-          <div className="impact-value">2 300+ <span className="impact-icon">💼</span></div>
-          <div className="impact-label">Build scalable solution</div>
-        </div>
-        <div className="impact-card">
-          <div className="impact-value">5+ Years <span className="impact-icon">📅</span></div>
-          <div className="impact-label">Deployment and support</div>
-        </div>
-      </div>
-      <div className="mentorship-cta">
-        <h3>Ready to Land Your Frontend Job?</h3>
-        <button className="mentorship-getstarted-btn">Get Started</button>
-      </div>
+      <MentorshipDetailsPopup open={showPopup} onClose={() => setShowPopup(false)} />
     </div>
-  </div>
-);
+  );
+};
 
 export default Mentorship;

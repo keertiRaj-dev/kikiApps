@@ -1,69 +1,122 @@
+/* --- Neon/Glowing UI Styles for Mentorship Page --- */
 .mentorship-bg {
   min-height: 100vh;
-  background: linear-gradient(180deg, #23234a 0%, #23234a 60%, #22223b 100%);
+  background: radial-gradient(ellipse at 50% 0%, #2a0047 0%, #1a002a 100%);
   color: #fff;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   padding-bottom: 40px;
 }
-.mentorship-container {
-  max-width: 1100px;
+.mentorship-main-container {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 16px 0 16px;
+  padding: 48px 16px 0 16px;
 }
 .mentorship-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5em;
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 0.3em;
   text-align: center;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+.mentorship-title-accent {
+  color: #ff7e32;
+  text-shadow: 0 0 12px #ff7e32cc, 0 0 32px #ff7e32aa;
 }
 .mentorship-subtitle {
   font-size: 1.25rem;
-  color: #c9c9e0;
+  color: #e0baff;
   text-align: center;
   margin-bottom: 2.5em;
+  text-shadow: 0 0 8px #a259ff33;
 }
-.mentorship-cards {
+.mentorship-cards-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  gap: 2.5em;
   justify-content: center;
   margin-bottom: 2.5em;
 }
-.mentorship-card {
-  background: #29295aee;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px #0002;
-  padding: 0 0 2em 0;
-  min-width: 320px;
-  max-width: 370px;
-  flex: 1 1 320px;
+.neon-card {
+  background: rgba(30, 0, 60, 0.95);
+  border-radius: 18px;
+  box-shadow: 0 0 32px 4px #a259ff55, 0 0 0 4px #ff7e3233;
+  border: 2px solid #a259ff;
+  padding: 0 2.2em 2.2em 2.2em; /* Added left and right padding */
+  min-width: 340px;
+  max-width: 400px;
+  flex: 1 1 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  transition: box-shadow 0.2s;
+}
+.neon-card:hover {
+  box-shadow: 0 0 48px 8px #ff7e32cc, 0 0 0 6px #a259ff99;
+}
+.mentorship-most-popular {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #ff7e32 0%, #a259ff 100%);
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 16px;
+  padding: 0.25em 1.2em;
+  box-shadow: 0 0 12px #ff7e32cc;
+  letter-spacing: 0.01em;
+  z-index: 2;
+}
+.mentorship-cheapest-badge {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #00ffd0 0%, #a259ff 100%);
+  color: #23234a;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 16px;
+  padding: 0.25em 1.2em;
+  box-shadow: 0 0 12px #00ffd0cc;
+  letter-spacing: 0.01em;
+  z-index: 2;
 }
 .mentorship-card-header {
-  background: linear-gradient(90deg, #3b4cca 0%, #23234a 100%);
+  background: transparent;
   color: #fff;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   width: 100%;
   text-align: center;
-  border-radius: 12px 12px 0 0;
-  padding: 1em 0;
-  margin-bottom: 0.5em;
+  border-radius: 18px 18px 0 0;
+  padding: 1.2em 0 0.5em 0;
+  margin-bottom: 0.2em;
+  letter-spacing: 0.01em;
+  text-shadow: 0 0 12px #a259ff99;
 }
-.mentorship-card-img {
-  width: 100%;
-  height: 140px;
-  background: #23234a url('https://placehold.co/350x140/23234a/fff?text=Image') center/cover no-repeat;
-  border-radius: 0 0 0 0;
-  margin-bottom: 1em;
+.mentorship-card-header-star .mentorship-star {
+  color: #ffb300;
+  text-shadow: 0 0 8px #ffb300cc, 0 0 16px #ffb30099;
+  font-size: 1.2em;
+  margin-left: 0.2em;
 }
-.mentorship-img-1 {
-  background-image: url('https://placehold.co/350x140/23234a/fff?text=1:1+Mentorship');
+.mentorship-group-emoji {
+  color: #00ffd0;
+  text-shadow: 0 0 8px #00ffd0cc, 0 0 16px #00ffd099;
+  font-size: 1.2em;
+  margin-left: 0.2em;
 }
-.mentorship-img-2 {
-  background-image: url('https://placehold.co/350x140/23234a/fff?text=Group+Webinar');
+.mentorship-card-label {
+  color: #ff7e32;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.7em;
+  text-align: center;
+  letter-spacing: 0.01em;
 }
 .mentorship-list {
   list-style: none;
@@ -72,100 +125,115 @@
   width: 100%;
 }
 .mentorship-list li {
-  font-size: 1.08rem;
+  font-size: 1.13rem;
   color: #fff;
-  margin-bottom: 0.7em;
-  position: relative;
-  padding-left: 1.5em;
+  margin-bottom: 0.8em;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  text-shadow: 0 0 8px #a259ff33;
 }
-.mentorship-list li:before {
-  content: '✔';
-  color: #3b4cca;
-  position: absolute;
-  left: 0;
-  font-size: 1.1em;
+.mentorship-list-icon {
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 6px #ff7e32cc);
+}
+.mentorship-list-mock {
+  color: #ffb300;
+  font-style: italic;
 }
 .mentorship-btn {
-  background: #3b4cca;
-  color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.08rem;
   border: none;
   border-radius: 8px;
   padding: 0.7em 2.2em;
   cursor: pointer;
-  box-shadow: 0 2px 8px #0002;
-  transition: background 0.2s;
-}
-.mentorship-btn:hover {
-  background: #23234a;
-}
-.mentorship-impact-title {
+  margin-bottom: 0.7em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  box-shadow: 0 0 16px #ff7e3233, 0 2px 8px #0002;
+  transition: background 0.2s, box-shadow 0.2s;
+  width: 250px;
+  display: inline-block;
   text-align: center;
-  font-size: 1.5rem;
-  margin: 2.5em 0 1em 0;
-  font-weight: 600;
 }
-.mentorship-impact-cards {
+.mentorship-btn-primary {
+  background: linear-gradient(90deg, #ff7e32 0%, #a259ff 100%);
+  color: #fff;
+  text-shadow: 0 0 8px #ff7e32cc;
+}
+.mentorship-btn-primary:hover {
+  background: linear-gradient(90deg, #a259ff 0%, #ff7e32 100%);
+  box-shadow: 0 0 24px #ff7e32cc;
+}
+.mentorship-btn-secondary {
+  background: transparent !important;
+  color: #ff7e32;
+  border: 2px solid #ff7e32;
+  text-shadow: none;
+}
+.mentorship-btn-secondary:hover {
+  background: #ff7e3222;
+}
+.mentorship-bottom-section {
+  margin-top: 3.5em;
+  text-align: center;
+}
+.mentorship-bottom-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2em;
+  text-shadow: 0 0 12px #ff7e32cc;
+}
+.mentorship-bottom-subtitle {
+  color: #e0baff;
+  font-size: 1.1rem;
+  margin-bottom: 2.2em;
+  text-shadow: 0 0 8px #a259ff33;
+}
+.mentorship-impact-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2em;
+  gap: 2.5em;
   margin-bottom: 2.5em;
 }
-.impact-card {
-  background: #23234aee;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px #0002;
-  padding: 1.2em 2em;
+.mentorship-impact-item {
+  background: rgba(30, 0, 60, 0.7);
+  border-radius: 14px;
+  box-shadow: 0 0 16px #a259ff55;
+  padding: 1.2em 2.2em;
   min-width: 180px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.impact-value {
-  font-size: 1.3rem;
-  font-weight: 700;
+.mentorship-impact-icon {
+  font-size: 1.5em;
   margin-bottom: 0.2em;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
+  filter: drop-shadow(0 0 6px #ff7e32cc);
 }
-.impact-icon {
-  font-size: 1.3em;
+.mentorship-impact-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ff7e32;
+  margin-bottom: 0.2em;
+  text-shadow: 0 0 8px #ff7e32cc;
 }
-.impact-label {
-  color: #bfc2e2;
-  font-size: 1rem;
+.mentorship-impact-label {
+  color: #e0baff;
+  font-size: 1.05rem;
   text-align: center;
+  margin-top: 0.2em;
 }
-.mentorship-cta {
-  text-align: center;
-  margin-top: 2.5em;
-}
-.mentorship-cta h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1.2em;
-}
-.mentorship-getstarted-btn {
-  background: linear-gradient(90deg, #ffe066 0%, #ffd43b 100%);
-  color: #23234a;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 8px;
-  padding: 0.8em 2.5em;
-  cursor: pointer;
-  box-shadow: 0 2px 8px #0002;
-  transition: background 0.2s;
-}
-.mentorship-getstarted-btn:hover {
-  background: linear-gradient(90deg, #ffd43b 0%, #ffe066 100%);
-}
-@media (max-width: 800px) {
-  .mentorship-cards, .mentorship-impact-cards {
+@media (max-width: 900px) {
+  .mentorship-cards-row, .mentorship-impact-row {
     flex-direction: column;
-    gap: 1em;
+    gap: 1.2em;
+  }
+  .neon-card {
+    min-width: 0;
+    max-width: 100%;
   }
 }

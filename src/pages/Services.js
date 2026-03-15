@@ -80,7 +80,15 @@ const Services = () => (
     <div className="services-container">
       <h1 className="services-title">Businesses I Work With</h1>
       <p className="services-subtitle">I build websites for a wide range of businesses. Here are some of the types of businesses I help:</p>
-       <button className="startproject-btn btn-purple">Start Your Project</button>
+       <a
+        href="https://forms.gle/gq2oG6YWgP7FsCGw7"
+        className="startproject-btn btn-purple"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: 'none', display: 'block', margin: '0 auto', width: 'fit-content' }}
+      >
+        Start Your Project
+      </a>
       <div className="businesses-cards-list">
         {businesses.map((b, i) => (
           <div className="business-card" key={i}>
@@ -149,7 +157,15 @@ const Services = () => (
       <div className="project-cta">
         <h2>Let's Build Your Website</h2>
         <p>Whether you are a startup, local business, or growing brand, I can help you create a website that stands out.</p>
-        <button className="startproject-btn btn-orange">Start Your Project</button>
+        <a
+          href="https://forms.gle/gq2oG6YWgP7FsCGw7"
+          className="startproject-btn btn-orange"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: 'none', display: 'block', margin: '0 auto', width: 'fit-content' }}
+        >
+          Start Your Project
+        </a>
       </div>
     
   </div>
