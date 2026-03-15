@@ -80,6 +80,7 @@ const Services = () => (
     <div className="services-container">
       <h1 className="services-title">Businesses I Work With</h1>
       <p className="services-subtitle">I build websites for a wide range of businesses. Here are some of the types of businesses I help:</p>
+       <button className="startproject-btn btn-purple">Start Your Project</button>
       <div className="businesses-cards-list">
         {businesses.map((b, i) => (
           <div className="business-card" key={i}>
@@ -90,6 +91,7 @@ const Services = () => (
       </div>
       <h2 className="process-title">My Website Development Process</h2>
       <div className="process-desc">A simple and structured process to deliver fast, scalable and reliable websites.</div>
+      
       <div className="process-bigcard">
         {processSteps.map((step, i) => (
           <div className="process-bigstep" key={i}>
@@ -143,12 +145,13 @@ const Services = () => (
           </div>
         </div>
       </div>
+      </div>
       <div className="project-cta">
         <h2>Let's Build Your Website</h2>
         <p>Whether you are a startup, local business, or growing brand, I can help you create a website that stands out.</p>
-        <button className="startproject-btn">Start Your Project 🚀</button>
+        <button className="startproject-btn btn-orange">Start Your Project</button>
       </div>
-    </div>
+    
   </div>
 );
 
