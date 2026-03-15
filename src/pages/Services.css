@@ -189,15 +189,66 @@
   margin: 0 auto 2.5rem auto;
   background: rgba(60, 20, 80, 0.25);
   border-radius: 22px;
-  border: 0.2px solid var(--accent-orange);
-  box-shadow: 0 0 32px 0 var(--accent-orange), 0 0 0 1.5px var(--accent-orange);
+  /* Remove box-shadow and border from here so only the animated border is visible */
+  box-shadow: none;
+  border: none;
   padding: 2.5rem 2.2rem 2.2rem 2.2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   position: relative;
+  overflow: visible;
   opacity: 0;
   animation: fade-in-up 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+.process-bigcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 22px;
+  border: 2px solid transparent;
+  border-color: transparent;
+  pointer-events: none;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 22px;
+  clip-path: inset(0 100% 100% 0 round 22px);
+  animation: none;
+}
+.process-bigcard.border-animate::before {
+  animation: border-draw-anim 4s cubic-bezier(1,1,1,1) forwards, border-color-anim 4s linear forwards;
+}
+@keyframes border-draw-anim {
+  0% {
+    clip-path: inset(0 100% 100% 0 round 22px);
+  }
+  25% {
+    clip-path: inset(0 0 100% 0 round 22px);
+  }
+  50% {
+    clip-path: inset(0 0 0 0 round 22px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0 round 22px);
+  }
+}
+@keyframes border-color-anim {
+  0% {
+    border-color: transparent;
+  }
+  20% {
+    border-color: transparent;
+  }
+  30% {
+    border-color: var(--accent-orange);
+  }
+  100% {
+    border-color: var(--accent-orange);
+  }
 }
 .process-bigstep {
   display: flex;
@@ -205,7 +256,15 @@
   align-items: flex-start;
   margin-bottom: 2.2rem;
   position: relative;
+  opacity: 0;
+  animation: fade-in-up 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
 }
+.process-bigstep:nth-child(1) { animation-delay: 0.5s; }
+.process-bigstep:nth-child(2) { animation-delay: 1s; }
+.process-bigstep:nth-child(3) { animation-delay: 1.5s; }
+.process-bigstep:nth-child(4) { animation-delay: 2s; }
+.process-bigstep:nth-child(5) { animation-delay: 2.5s; }
+
 .process-stepnum {
   min-width: 44px;
   min-height: 44px;

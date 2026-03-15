@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Services.css';
 
 const businesses = [
@@ -75,100 +75,130 @@ const features = [
   { icon: '✅', label: 'Easy Navigation' },
 ];
 
-const Services = () => (
-  <div className="services-bg">
-    <div className="services-container">
-      <h1 className="services-title">Businesses I Work With</h1>
-      <p className="services-subtitle">I build websites for a wide range of businesses. Here are some of the types of businesses I help:</p>
-       <a
-        href="https://forms.gle/gq2oG6YWgP7FsCGw7"
-        className="startproject-btn btn-purple"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ textDecoration: 'none', display: 'block', margin: '0 auto', width: 'fit-content' }}
-      >
-        Start Your Project
-      </a>
-      <div className="businesses-cards-list">
-        {businesses.map((b, i) => (
-          <div className="business-card" key={i}>
-            <span className="business-icon">{b.icon}</span>
-            <span className="business-label">{b.label}</span>
-          </div>
-        ))}
-      </div>
-      <h2 className="process-title">My Website Development Process</h2>
-      <div className="process-desc">A simple and structured process to deliver fast, scalable and reliable websites.</div>
-      
-      <div className="process-bigcard">
-        {processSteps.map((step, i) => (
-          <div className="process-bigstep" key={i}>
-            <div className="process-stepnum">{step.num}</div>
-            <div className="process-stepicon">{step.icon}</div>
-            <div className="process-stepcontent">
-              <div className="process-steptitle">{step.title}</div>
-              <div className="process-stepdesc">{step.desc}</div>
-            </div>
-            {i !== processSteps.length - 1 && <div className="process-connector" />}
-          </div>
-        ))}
-      </div>
+const Services = () => {
+  const processCardRef = useRef(null);
 
-      {/* WHY CHOOSE MY SERVICES SECTION */}
-      <div className="whychoose-section">
-        <h2 className="whychoose-title">Why Choose My Services?</h2>
-        <p className="whychoose-subtitle">I deliver websites that are fast, user-friendly, and optimized for success.</p>
-        <div className="whychoose-features-grid">
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">🏎️</span>
-            <span className="whychoose-label">Fast Loading Pages</span>
-          </div>
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">🖥️</span>
-            <span className="whychoose-label">Modern UI Design</span>
-          </div>
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">📈</span>
-            <span className="whychoose-label">SEO Friendly</span>
-          </div>
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">🧭</span>
-            <span className="whychoose-label">Easy Navigation</span>
-          </div>
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">💻</span>
-            <span className="whychoose-label">Responsive Design</span>
-          </div>
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">📱</span>
-            <span className="whychoose-label">Mobile Optimized</span>
-          </div>
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">📊</span>
-            <span className="whychoose-label">Scalable for Growth</span>
-          </div>
-          <div className="whychoose-feature">
-            <span className="whychoose-icon">🛡️</span>
-            <span className="whychoose-label">Secure & Reliable</span>
-          </div>
-        </div>
-      </div>
-      </div>
-      <div className="project-cta">
-        <h2>Let's Build Your Website</h2>
-        <p>Whether you are a startup, local business, or growing brand, I can help you create a website that stands out.</p>
-        <a
+  useEffect(() => {
+    const card = processCardRef.current;
+    if (!card) return;
+    let timeoutId = null;
+    const handleIntersect = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          card.classList.remove('border-animate');
+          // Force reflow to restart animation
+          void card.offsetWidth;
+          timeoutId = setTimeout(() => {
+            card.classList.add('border-animate');
+          }, 10);
+        } else {
+          card.classList.remove('border-animate');
+        }
+      });
+    };
+    const observer = new window.IntersectionObserver(handleIntersect, { threshold: 0.3 });
+    observer.observe(card);
+    return () => {
+      observer.disconnect();
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, []);
+
+  return (
+    <div className="services-bg">
+      <div className="services-container">
+        <h1 className="services-title">Businesses I Work With</h1>
+        <p className="services-subtitle">I build websites for a wide range of businesses. Here are some of the types of businesses I help:</p>
+         <a
           href="https://forms.gle/gq2oG6YWgP7FsCGw7"
-          className="startproject-btn btn-orange"
+          className="startproject-btn btn-purple"
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: 'none', display: 'block', margin: '0 auto', width: 'fit-content' }}
         >
           Start Your Project
         </a>
-      </div>
-    
-  </div>
-);
+        <div className="businesses-cards-list">
+          {businesses.map((b, i) => (
+            <div className="business-card" key={i}>
+              <span className="business-icon">{b.icon}</span>
+              <span className="business-label">{b.label}</span>
+            </div>
+          ))}
+        </div>
+        <h2 className="process-title">My Website Development Process</h2>
+        <div className="process-desc">A simple and structured process to deliver fast, scalable and reliable websites.</div>
+        
+        <div className="process-bigcard" ref={processCardRef}>
+          {processSteps.map((step, i) => (
+            <div className="process-bigstep" key={i}>
+              <div className="process-stepnum">{step.num}</div>
+              <div className="process-stepicon">{step.icon}</div>
+              <div className="process-stepcontent">
+                <div className="process-steptitle">{step.title}</div>
+                <div className="process-stepdesc">{step.desc}</div>
+              </div>
+              {i !== processSteps.length - 1 && <div className="process-connector" />}
+            </div>
+          ))}
+        </div>
+
+        {/* WHY CHOOSE MY SERVICES SECTION */}
+        <div className="whychoose-section">
+          <h2 className="whychoose-title">Why Choose My Services?</h2>
+          <p className="whychoose-subtitle">I deliver websites that are fast, user-friendly, and optimized for success.</p>
+          <div className="whychoose-features-grid">
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">🏎️</span>
+              <span className="whychoose-label">Fast Loading Pages</span>
+            </div>
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">🖥️</span>
+              <span className="whychoose-label">Modern UI Design</span>
+            </div>
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">📈</span>
+              <span className="whychoose-label">SEO Friendly</span>
+            </div>
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">🧭</span>
+              <span className="whychoose-label">Easy Navigation</span>
+            </div>
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">💻</span>
+              <span className="whychoose-label">Responsive Design</span>
+            </div>
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">📱</span>
+              <span className="whychoose-label">Mobile Optimized</span>
+            </div>
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">📊</span>
+              <span className="whychoose-label">Scalable for Growth</span>
+            </div>
+            <div className="whychoose-feature">
+              <span className="whychoose-icon">🛡️</span>
+              <span className="whychoose-label">Secure & Reliable</span>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div className="project-cta">
+          <h2>Let's Build Your Website</h2>
+          <p>Whether you are a startup, local business, or growing brand, I can help you create a website that stands out.</p>
+          <a
+            href="https://forms.gle/gq2oG6YWgP7FsCGw7"
+            className="startproject-btn btn-orange"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ textDecoration: 'none', display: 'block', margin: '0 auto', width: 'fit-content' }}
+          >
+            Start Your Project
+          </a>
+        </div>
+      
+    </div>
+  );
+};
 
 export default Services;
