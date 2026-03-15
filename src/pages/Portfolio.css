@@ -1,5 +1,6 @@
 .portfolio-main {
   background-color: var(--black);
+  padding-bottom: 48px;
 }
 .portfolio-container {
   max-width: 1200px;
@@ -40,8 +41,9 @@
 }
 
 .portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(360px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2.5rem 2rem;
   margin-bottom: 2.5rem;
 }
@@ -253,7 +255,8 @@
 
 @media (max-width: 1200px) {
   .portfolio-grid {
-    grid-template-columns: repeat(2, minmax(340px, 1fr));
+    flex-direction: column;
+    align-items: center;
   }
 }
 
