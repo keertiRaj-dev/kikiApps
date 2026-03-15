@@ -70,7 +70,7 @@ setCalc(value);
     </div>
     </div>
     <div className="kcalcbutt">
-      <button className="kcalc-back-btn" onClick={()=>navigate("/applications")}>Go back</button>
+      <button className="kcalc-back-btn" onClick={()=>navigate("/portfolio")}>Go back</button>
     </div>
 </div>
   );

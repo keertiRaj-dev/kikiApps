@@ -7,10 +7,17 @@ import logoImg from "../logo.svg";
 import moctamaImg from "../Assets/moktama.jpg";
 import knockinImg from "../Assets/knockin.jpeg";
 import swipeImg from "../Assets/swipe.jpg";
+import contactimg from "../Assets/contact.jpg";
+import weatherimg from "../Assets/weather.jpg";
+import recipeimg from "../Assets/recipe.webp"
+import quizimg from "../Assets/quiz.webp"
+import diceimg from "../Assets/dice.jpeg"
+import drumimg from "../Assets/drum.jpeg"
+
 
 const cardContents = [
 	{
-		title: "Moktama IT solutions",
+		title: "Moktama IT Solutions",
 		desc: "A IT Solutions company in USA",
 		image: moctamaImg,
 		highlight: "orange",
@@ -22,27 +29,51 @@ const cardContents = [
 		highlight: "orange",
 	},
 	{
-		title: "Swipe and buy",
+		title: "Swipe and Buy",
 		desc: "eCommerce feature",
 		image: swipeImg,
 		highlight: "orange",
 	},
 	{
-		title: "calculator app",
-		desc: "Basic calculator with modern UI.",
+		title: "Calculator App",
+		desc: "Basic calculator with modern UI",
 		image: calculatorImg,
 		highlight: "yellow",
 	},
 	{
-		title: "contact app",
-		desc: "",
-		image: logoImg,
+		title: "Contact App",
+		desc: "Store and manage contacts",
+		image: contactimg,
 		highlight: "yellow",
 	},
 	{
-		title: "weather app",
-		desc: "",
-		image: logoImg,
+		title: "Weather App",
+		desc: "Real-time weather information for any location",
+		image: weatherimg,
+		highlight: "yellow",
+	},
+	{
+		title: "Recipe Search App",
+		desc: "Find and explore recipes by ingredients or name",
+		image: recipeimg,
+		highlight: "yellow",
+	},
+	{
+		title: "Quiz App",
+		desc: "Interactive quizzes on various topics",
+		image: quizimg,
+		highlight: "yellow",
+	},
+	{
+		title: "Dice Roll",
+		desc: "Simulate rolling dice for games or fun",
+		image: diceimg,
+		highlight: "yellow",
+	},
+	{
+		title: "Drum App",
+		desc: "Play virtual drums with keyboard or mouse",
+		image: drumimg,
 		highlight: "yellow",
 	},
 ];
@@ -64,7 +95,7 @@ const Portfolio = () => {
 			<div className="portfolio-container">
 				<h2 className="portfolio-title">
 					Projects{" "}
-					<span className="portfolio-highlight">&amp; Case Studies</span>
+					<span className="portfolio-highlight">&amp; Applications</span>
 				</h2>
 				<div className="portfolio-divider" />
 				<p className="portfolio-subtitle">
