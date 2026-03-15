@@ -197,7 +197,7 @@
 }
 
 .about-work-card {
-  background: linear-gradient(135deg, rgba(40,40,60,0.98) 60%, rgba(242,78,30,0.10) 100%);
+  background: linear-gradient(135deg, #18122B 0%, #393053 100%);
   border-radius: 20px;
   box-shadow: 0 0 12px 2px #F24E1E, 0 2px 8px #F24E1E;
   padding: 28px 28px 22px 28px;
