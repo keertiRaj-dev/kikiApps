@@ -1,7 +1,7 @@
 /* Cosmic neon theme, consistent with other pages */
 .about-cosmic-bg {
   min-height: 100vh;
-  background: linear-gradient(135deg, #18122B 0%, #393053 100%);
+  background: black;
   color: #fff;
 
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
@@ -446,6 +446,67 @@
   box-shadow: 0 0 3px #1d3557, 0 0 6px #00fff7;
 }
 
+/* --- Skills Fly-in Section --- */
+.skills-flyin-section {
+  margin: 5rem 0 2rem 0;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  min-height: 340px;
+}
+.skills-flyin-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 32px;
+  margin: 2.5rem auto 0 auto;
+}
+.skill-flyin {
+  min-width: 120px;
+  padding: 0.7rem 2.2rem;
+  border-radius: 18px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  background: #23234b;
+  box-shadow: 0 0 12px #ff9100, 0 0 8px #00fff7;
+  opacity: 0;
+  transform: scale(0.7);
+  animation: skill-flyin-center 0.8s cubic-bezier(0.6,0.2,0.2,1) forwards;
+}
+.skill-flyin-orange { border: 2px solid #ff9100; box-shadow: 0 0 8px #ff9100; }
+.skill-flyin-blue { border: 2px solid #00fff7; box-shadow: 0 0 8px #00fff7; }
+.skill-flyin-pink { border: 2px solid #ff3c6f; box-shadow: 0 0 8px #ff3c6f; }
+.skill-flyin-purple { border: 2px solid #b39ddb; box-shadow: 0 0 8px #b39ddb; }
+.skill-flyin-green { border: 2px solid #00e676; box-shadow: 0 0 8px #00e676; }
+
+/* Fly-in directions */
+.skill-flyin-from-left { animation-name: skill-flyin-left; }
+.skill-flyin-from-right { animation-name: skill-flyin-right; }
+.skill-flyin-from-top { animation-name: skill-flyin-top; }
+.skill-flyin-from-bottom { animation-name: skill-flyin-bottom; }
+
+@keyframes skill-flyin-left {
+  0% { opacity: 0; transform: translateX(-200px) scale(0.7); }
+  80% { opacity: 1; transform: translateX(10px) scale(1.05); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes skill-flyin-right {
+  0% { opacity: 0; transform: translateX(200px) scale(0.7); }
+  80% { opacity: 1; transform: translateX(-10px) scale(1.05); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes skill-flyin-top {
+  0% { opacity: 0; transform: translateY(-120px) scale(0.7); }
+  80% { opacity: 1; transform: translateY(10px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes skill-flyin-bottom {
+  0% { opacity: 0; transform: translateY(120px) scale(0.7); }
+  80% { opacity: 1; transform: translateY(-10px) scale(1.05); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 @media (max-width: 900px) {
   .about-profile-section {
     flex-direction: column;
@@ -496,5 +557,14 @@
   }
   .about-work-row-bottom {
     padding: 12px 12px 8px 12px;
+  }
+  .skills-flyin-grid {
+    gap: 16px 8px;
+    max-width: 98vw;
+  }
+  .skill-flyin {
+    min-width: 90px;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
   }
 }

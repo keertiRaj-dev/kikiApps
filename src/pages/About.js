@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./About.css";
 import profileImg from "../Assets/contact.jpg";
 import publicisLogo from "../Assets/sapient.png";
@@ -6,7 +6,79 @@ import victoriaLogo from "../Assets/vsco.png";
 import harmanLogo from "../Assets/harman.svg";
 import keertiImg from "../Assets/keerti.png";
 
+const SKILLS = [
+  // Row 1 (top)
+  { label: "HTML5", color: "orange", direction: "from-top" },
+  { label: "CSS3", color: "orange", direction: "from-top" },
+  { label: "JavaScript (ES6+)", color: "orange", direction: "from-top" },
+  { label: "TypeScript", color: "pink", direction: "from-top" },
+  { label: "React.js", color: "blue", direction: "from-top" },
+
+  // Row 2 (left)
+  { label: "Redux", color: "purple", direction: "from-left" },
+  { label: "Tailwind CSS", color: "blue", direction: "from-left" },
+  { label: "Next JS", color: "blue", direction: "from-left" },
+  { label: "Bootstrap", color: "orange", direction: "from-left" },
+  { label: "Material UI", color: "blue", direction: "from-left" },
+
+  // Row 3 (right)
+  { label: "Figma", color: "blue", direction: "from-right" },
+  { label: "WCAG compliance", color: "purple", direction: "from-right" },
+  { label: "Responsive Design", color: "orange", direction: "from-right" },
+  { label: "Localization", color: "blue", direction: "from-right" },
+
+  // Row 4 (left)
+  { label: "Node.js", color: "green", direction: "from-left" },
+  { label: "Axios", color: "blue", direction: "from-left" },
+  { label: "REST API", color: "orange", direction: "from-left" },
+  { label: "GraphQL", color: "pink", direction: "from-left" },
+
+  // Row 5 (right)
+  { label: "Jest (Unit Testing)", color: "orange", direction: "from-right" },
+  { label: "Code Reviews", color: "blue", direction: "from-right" },
+  { label: "Web Analytics", color: "purple", direction: "from-right" },
+  { label: "Chrome Dev Tools", color: "blue", direction: "from-right" },
+  { label: "Lighthouse", color: "green", direction: "from-right" },
+
+  // Row 6 (left)
+  { label: "Git", color: "orange", direction: "from-left" },
+  { label: "GitHub", color: "blue", direction: "from-left" },
+  { label: "Bitbucket", color: "purple", direction: "from-left" },
+  { label: "VS Code", color: "blue", direction: "from-left" },
+  { label: "Webpack", color: "purple", direction: "from-left" },
+  { label: "Babel", color: "orange", direction: "from-left" },
+  { label: "npm", color: "green", direction: "from-left" },
+
+  // Row 7 (right)
+  { label: "Jira", color: "orange", direction: "from-right" },
+  { label: "Confluence", color: "blue", direction: "from-right" },
+  { label: "Agile/Scrum practices", color: "purple", direction: "from-right" },
+
+  // Row 8 (bottom)
+  { label: "Data Structures & Algorithms", color: "orange", direction: "from-bottom" },
+  { label: "Problem Solving", color: "blue", direction: "from-bottom" },
+  { label: "Analytical Thinking", color: "purple", direction: "from-bottom" },
+  { label: "Leadership", color: "orange", direction: "from-bottom" },
+  { label: "Adaptability", color: "green", direction: "from-bottom" },
+];
+
 const About = () => {
+  const skillsRef = useRef();
+  const [animateKey, setAnimateKey] = useState(0);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimateKey((k) => k + 1); // retrigger animation
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (skillsRef.current) observer.observe(skillsRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="about-cosmic-bg">
       <div className="about-main-container">
@@ -115,6 +187,21 @@ I enjoy solving complex UI challenges and turning product ideas into seamless, i
                 Built modern frontend applications and collaborated with international teams including BMW Germany engineers.
               </div>
             </div>
+          </div>
+        </div>
+        {/* SKILLS SECTION */}
+        <div className="skills-flyin-section" ref={skillsRef}>
+          <h2 className="about-section-title">Skills</h2>
+          <div className="skills-flyin-grid">
+            {SKILLS.map((skill, i) => (
+              <span
+                key={skill.label + i + animateKey}
+                className={`skill-flyin skill-flyin-${skill.direction} skill-flyin-${skill.color}`}
+                style={{ animationDelay: `${0.08 * i}s` }}
+              >
+                {skill.label}
+              </span>
+            ))}
           </div>
         </div>
       </div>
