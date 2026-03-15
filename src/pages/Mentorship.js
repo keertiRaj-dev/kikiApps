@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Mentorship.css';
 import MentorshipDetailsPopup from '../components/MentorshipDetailsPopup';
+import WebinarDetailsPopup from '../components/WebinarDetailsPopup';
 
 const Mentorship = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [showWebinarPopup, setShowWebinarPopup] = useState(false);
   return (
     <div className="mentorship-bg">
       <div className="mentorship-main-container">
@@ -42,7 +44,7 @@ const Mentorship = () => {
               <li><span className="mentorship-list-icon">🗣️</span> Confidence & Communication</li>
             </ul>
             <button className="mentorship-btn mentorship-btn-primary">Join Next Webinar</button>
-            <button className="mentorship-btn mentorship-btn-secondary">View Details</button>
+            <button className="mentorship-btn mentorship-btn-secondary" onClick={() => setShowWebinarPopup(true)}>View Details</button>
           </div>
         </div>
         {/* Bottom Section */}
@@ -71,6 +73,7 @@ const Mentorship = () => {
         </div>
       </div>
       <MentorshipDetailsPopup open={showPopup} onClose={() => setShowPopup(false)} />
+      <WebinarDetailsPopup open={showWebinarPopup} onClose={() => setShowWebinarPopup(false)} />
     </div>
   );
 };
