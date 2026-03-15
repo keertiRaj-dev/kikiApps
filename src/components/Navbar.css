@@ -29,6 +29,13 @@
   font-weight: 500;
   cursor: pointer;
 }
+.navbar-links li.active {
+  color: #ffd86b;
+  font-weight: 700;
+  border-bottom: 2px solid #ffd86b;
+  background: rgba(255, 216, 107, 0.08);
+  border-radius: 4px 4px 0 0;
+}
 @media (max-width: 700px) {
   .navbar {
     flex-direction: column;
