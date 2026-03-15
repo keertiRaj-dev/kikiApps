@@ -41,7 +41,7 @@
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(360px, 1fr));
   gap: 2.5rem 2rem;
   margin-bottom: 2.5rem;
 }
@@ -54,8 +54,7 @@
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s, border 0.2s, transform 0.2s;
-  min-height: 320px;
-  height: 320px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -89,19 +88,33 @@
 }
 
 .cosmic-card-content {
-  flex: 1 1 auto;
-  padding: 1.1rem 1.2rem 1.2rem 1.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0.7rem 1rem 0.8rem 1rem;
+  background: linear-gradient(180deg, #232e4d 0%, #181c2a 100%);
+  min-height: 0;
+  max-height: none;
+  overflow: hidden;
+}
+
+.cosmic-card-content-text {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  background: linear-gradient(180deg, #232e4d 0%, #181c2a 100%);
+  justify-content: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-top: 0;
 }
 
 .cosmic-card-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+  margin-top: 0;
 }
 
 .cosmic-title-orange {
@@ -116,8 +129,12 @@
 
 .cosmic-card-desc {
   color: #bfc8e2;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   margin: 0;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .portfolio-loadmore {
@@ -172,9 +189,77 @@
   color: #ffd86b;
 }
 
+.portfolio-card-open-btn {
+  align-self: stretch;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 1rem;
+  background: linear-gradient(90deg, #ffd86b 0%, #ffb800 100%);
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 #ffd86b44;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  height: auto;
+}
+
+.portfolio-card-open-btn:hover {
+  background: linear-gradient(90deg, #3a4a7a 0%, #2b3467 100%);
+  color: #ffd86b;
+}
+
+.portfolio-calculator-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-calculator-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  z-index: 1001;
+}
+
+.portfolio-calculator-modal-content {
+  position: relative;
+  z-index: 1002;
+  background: #232e4d;
+  border-radius: 18px;
+  box-shadow: 0 8px 48px 0 #000a;
+  padding: 2rem 2rem 1.5rem 2rem;
+  min-width: 340px;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, minmax(340px, 1fr));
+  }
+}
+
 @media (max-width: 900px) {
   .portfolio-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 }
 

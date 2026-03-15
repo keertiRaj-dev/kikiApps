@@ -6,6 +6,7 @@ import Services from './pages/Services';
 import Mentorship from './pages/Mentorship';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
+import CalculatorPage from './pages/CalculatorPage';
 
 const AppRouter = () => (
   <Router>
@@ -16,6 +17,7 @@ const AppRouter = () => (
       <Route path="/mentorship" element={<Mentorship />} />
       <Route path="/portfolio" element={<Portfolio />} />
       <Route path="/about" element={<About />} />
+      <Route path="/calculator" element={<CalculatorPage />} />
     </Routes>
   </Router>
 );

@@ -23,12 +23,13 @@ const updateCalc = (value) =>{
     setResult(eval(calc + value).toString());
   }
 }
+// Update createDigits to use new class
 const createDigits = () => {
   const digits = [];
 
   for (let i=1; i<10; i++) {
     digits.push(
-      <button className="calc-button" onClick = {() =>updateCalc(i.toString())} key={i}>{i}</button>
+      <button className="kcalc-button" onClick = {() =>updateCalc(i.toString())} key={i}>{i}</button>
     );
   }
 
@@ -45,32 +46,32 @@ const value = calc.slice(0, -1);
 setCalc(value);
 }
 
-  return (<div className="calcTotal">
-    <div className="calc">
-    <div className="calculator">
-    <div className="display">
+  return (<div className="kcalcTotal">
+    <div className="kcalc">
+    <div className="kcalculator">
+    <div className="kcalc-display">
     {result ? <span>({result}) </span> : ""}
 
     {calc || "0"}
   </div>
-    <div className="operators ">
-    <button className="calc-button" onClick = {() => updateCalc('/')}>/</button>
-    <button className="calc-button" onClick = {() => updateCalc('*')}>*</button>
-    <button className="calc-button" onClick = {() => updateCalc('+')}>+</button>
-    <button className="calc-button" onClick = {() => updateCalc('-')}>-</button>
-    <button className="calc-button" onClick = {deleteLast}>DEL</button>
+    <div className="kcalc-operators ">
+    <button className="kcalc-button" onClick = {() => updateCalc('/')}>/</button>
+    <button className="kcalc-button" onClick = {() => updateCalc('*')}>*</button>
+    <button className="kcalc-button" onClick = {() => updateCalc('+')}>+</button>
+    <button className="kcalc-button" onClick = {() => updateCalc('-')}>-</button>
+    <button className="kcalc-button" onClick = {deleteLast}>DEL</button>
   </div>
-    <div className="digits">
+    <div className="kcalc-digits">
     {createDigits()}
-    <button className="calc-button" onClick = {() => updateCalc('0')}>0</button>
-    <button className="calc-button" onClick = {() => updateCalc('.')}>.</button>
-    <button className="calc-button" onClick = {calculate}>=</button>
+    <button className="kcalc-button" onClick = {() => updateCalc('0')}>0</button>
+    <button className="kcalc-button" onClick = {() => updateCalc('.')}>.</button>
+    <button className="kcalc-button" onClick = {calculate}>=</button>
   </div>
     </div>
     </div>
-    <div className="calcbutt">
-    <button className="btn btn-dark btn-lg  "onClick={()=>navigate("/applications")}>Go back</button>
-</div>
+    <div className="kcalcbutt">
+      <button className="kcalc-back-btn" onClick={()=>navigate("/applications")}>Go back</button>
+    </div>
 </div>
   );
 }

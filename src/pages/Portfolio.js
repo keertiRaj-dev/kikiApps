@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Portfolio.css";
 import calculatorImg from "../Assets/calculator.png";
 import laptopImg from "../Assets/laptop.jpg";
@@ -28,7 +29,7 @@ const cardContents = [
 	},
 	{
 		title: "calculator app",
-		desc: "",
+		desc: "Basic calculator with modern UI.",
 		image: calculatorImg,
 		highlight: "yellow",
 	},
@@ -48,7 +49,15 @@ const cardContents = [
 
 const Portfolio = () => {
 	const [showAll, setShowAll] = useState(false);
+	const navigate = useNavigate();
 	const visibleCards = showAll ? cardContents : cardContents.slice(0, 6);
+
+	const handleOpen = (title) => {
+		if (title === "calculator app") {
+			navigate("/calculator");
+		}
+		// Add more logic for other cards if needed
+	};
 
 	return (
 		<div className="portfolio-main">
@@ -71,20 +80,26 @@ const Portfolio = () => {
 								<img
 									src={card.image}
 									alt={card.title}
-						
-									
 								/>
 							</div>
 							<div className="cosmic-card-content">
-								<h4
-									className={`cosmic-card-title cosmic-title-${card.highlight}`}
-									style={{ marginBottom: "0.5rem" }}
+								<div className="cosmic-card-content-text">
+									<h4
+										className={`cosmic-card-title cosmic-title-${card.highlight}`}
+										style={{ marginBottom: "0.5rem" }}
+									>
+										{card.title}
+									</h4>
+									{card.desc && (
+										<p className="cosmic-card-desc">{card.desc}</p>
+									)}
+								</div>
+								<button
+									className="portfolio-card-open-btn"
+									onClick={() => handleOpen(card.title)}
 								>
-									{card.title}
-								</h4>
-								{card.desc && (
-									<p className="cosmic-card-desc">{card.desc}</p>
-								)}
+									Open
+								</button>
 							</div>
 						</div>
 					))}
