@@ -13,6 +13,7 @@
   padding: 36px 32px 24px 32px;
   min-width: 900px;
   max-width: 98vw;
+  border: 2px solid #7c3aed;
   box-shadow: 0 8px 40px 0 #000a  ;
   position: relative;
   color: #fff;

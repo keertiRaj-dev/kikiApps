@@ -53,7 +53,7 @@
   transition: box-shadow 0.2s;
 }
 .neon-card:hover {
-  box-shadow: 0 0 48px 8px #ff7e32cc, 0 0 0 6px #a259ff99;
+  box-shadow: 0 0 0 6px #a259ff99;
 }
 .mentorship-most-popular {
   position: absolute;

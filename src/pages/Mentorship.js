@@ -30,7 +30,7 @@ const Mentorship = () => {
               <li><span className="mentorship-list-icon">💡</span> Confidence Building & Career Guidance</li>
             </ul>
             <button className="mentorship-btn mentorship-btn-primary">Book 1:1 Session</button>
-            <button className="mentorship-btn mentorship-btn-secondary" onClick={() => setShowPopup(true)}>My Details</button>
+            <button className="mentorship-btn mentorship-btn-secondary" onClick={() => setShowPopup(true)}>View Details</button>
           </div>
           {/* Group Webinar Card */}
           <div className="mentorship-card neon-card">
