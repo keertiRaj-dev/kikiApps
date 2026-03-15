@@ -143,15 +143,6 @@ const Services = () => (
           </div>
         </div>
       </div>
-
-      <div className="features-list">
-        {features.map((f, i) => (
-          <div className="feature-item" key={i}>
-            <span className="feature-icon">{f.icon}</span>
-            <span className="feature-label">{f.label}</span>
-          </div>
-        ))}
-      </div>
       <div className="project-cta">
         <h2>Let's Build Your Website</h2>
         <p>Whether you are a startup, local business, or growing brand, I can help you create a website that stands out.</p>
