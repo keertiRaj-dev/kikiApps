@@ -18,9 +18,9 @@ const About = () => {
             <h1 className="about-title">About Me</h1>
             <h2 className="about-subtitle">Frontend Engineer with <span className="about-highlight">5+ Years of Experience</span></h2>
             <p className="about-profile-desc" style={{ textAlign: 'justify' }}>
-              I build scalable, high-performance frontend applications using React, JavaScript, GraphQL, and micro-frontend architecture.
+              I build scalable, high-performance frontend applications using React, JavaScript, GraphQL, and micro-frontend architecture. I’ve collaborated with global teams across the US and Europe on large-scale eCommerce and enterprise platforms, focusing on clean UI architecture, reusable components, and performant user experiences.
 
-I’ve collaborated with global teams across the US and Europe on large-scale eCommerce and enterprise platforms, focusing on clean UI architecture, reusable components, and performant user experiences. 🚀
+I enjoy solving complex UI challenges and turning product ideas into seamless, intuitive user experiences. I’m always learning and exploring new technologies to build faster, more reliable, and scalable frontend systems.
 
             </p>
             <div className="about-contact-links">

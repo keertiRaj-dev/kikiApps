@@ -42,11 +42,22 @@
 .about-profile-img {
   width: 400px;
   height: auto;
+
   object-fit: cover;
-  border-radius: 18px;
-  box-shadow: none;
   position: relative;
   z-index: 2;
+
+  /* smooth edge fade */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%),
+                      linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-composite: intersect;
+
+  mask-image: linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%),
+              linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-composite: intersect;
+
+  /* glow that matches your theme */
+  filter: drop-shadow(0 0 40px rgba(255, 120, 0, 0.35));
 }
 
 .about-profile-info {
@@ -186,9 +197,9 @@
 }
 
 .about-work-card {
-  background: rgba(40, 40, 60, 0.95);
+  background: linear-gradient(135deg, rgba(40,40,60,0.98) 60%, rgba(242,78,30,0.10) 100%);
   border-radius: 20px;
-  box-shadow: 0 0 12px 2px #F24E1E 0 2px 8px #F24E1E;;
+  box-shadow: 0 0 12px 2px #F24E1E, 0 2px 8px #F24E1E;
   padding: 28px 28px 22px 28px;
   width: 25%;
   min-width: 250px;
