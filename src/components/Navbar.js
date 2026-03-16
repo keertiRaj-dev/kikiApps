@@ -15,7 +15,7 @@ const Navbar = () => {
   ];
   return (
     <nav className="navbar">
-      <div className="navbar-logo" onClick={() => navigate('/')}>KikiApps</div>
+      <div className="navbar-logo" onClick={() => navigate('/')}>Kiki Apps</div>
       <ul className="navbar-links">
         {navLinks.map((link) => (
           <li

@@ -62,10 +62,12 @@ const Mentorship = () => {
               <span className="mentorship-impact-label">Developers Mentored</span>
             </div>
             <div className="mentorship-impact-item">
+              <span className="mentorship-impact-icon">🗣️</span>
               <span className="mentorship-impact-value">150+</span>
               <span className="mentorship-impact-label">Interviews Given</span>
             </div>
             <div className="mentorship-impact-item">
+              <span className="mentorship-impact-icon">⏳</span>
               <span className="mentorship-impact-value">5+</span>
               <span className="mentorship-impact-label">Years in Frontend</span>
             </div>
