@@ -23,7 +23,7 @@
   justify-content: space-between;
   background: #000;
   padding-top: 4rem;
-  padding-left: 5rem;
+ 
 }
 
 .hero-left {
@@ -35,6 +35,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-left: 4%;
+  padding-right: 4%;
 }
 
 .hero-right {
@@ -44,6 +46,7 @@
   align-items: stretch;
   overflow: hidden; /* Ensure image stays in right half and doesn't overflow */
   height: 100%;
+
 }
 
 .hero-content {
@@ -58,7 +61,7 @@
 
 .hero-content h1 {
   color: #fff;
-  font-size: 4rem;
+  font-size: clamp(1.3rem, 6vw, 4rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.2rem;
@@ -110,6 +113,12 @@
     flex-direction: column;
     gap: 1.5rem;
     min-height: unset;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+  .hero-left, .hero-right {
+    padding-left: 2%;
+    padding-right: 2%;
   }
   .hero-content {
    
@@ -145,7 +154,7 @@
 
 .hero-welcome {
   color: #ff6600;
-  font-size: 2.2rem;
+  font-size: clamp(1rem, 4vw, 2.2rem);
   font-weight: 400;
   letter-spacing: 2px;
   margin: 0;
