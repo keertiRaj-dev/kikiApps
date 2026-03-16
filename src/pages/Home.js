@@ -160,8 +160,8 @@ const Home = () => {
               <h1>Building Websites and Developers</h1>
               <p>Code - Create - Mentor</p>
               <div className="hero-buttons">
-                <Button onClick={() => navigate('/services')}>Hire Me</Button>
-                <Button variant="secondary" onClick={() => navigate('/mentorship')}>Book Mentorship</Button>
+                <Button onClick={() => navigate('/services')}>Get a Website</Button>
+                <Button variant="secondary" onClick={() => navigate('/mentorship')}>Get Mentorship</Button>
               </div>
             </div>
           </div>
