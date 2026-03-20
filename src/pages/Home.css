@@ -203,7 +203,6 @@
 /* Review Carousel Styles */
 .carousel-section {
   width: 100vw;
-  min-height: 100vh;
   background: radial-gradient(ellipse at center, #1a0933 0%, #0a0612 100%);
   display: flex;
   flex-direction: column;
@@ -214,13 +213,13 @@
 
 .carousel-bg {
   width: 100vw;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   background: none;
   padding-top: 3rem;
+  padding-bottom: 0;
 }
 
 .carousel-title {
@@ -487,7 +486,7 @@
     margin: 0 0.4rem;
   }
   .carousel-title {
-    font-size: clamp(1.1rem, 5vw, 1.5rem);
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
   }
   .carousel-section {
     padding-bottom: 1.5rem;
