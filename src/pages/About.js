@@ -84,9 +84,9 @@ const About = () => {
       <div className="about-main-container">
         <div className="about-profile-section responsive-profile-section">
           {/* In mobile view, About info comes first */}
-          <div className="about-profile-info" style={{ flex: '1 1 80%' }}>
-            <h1 className="about-title">About Me</h1>
-            <h2 className="about-subtitle">Frontend Engineer with <span className="about-highlight">5+ Years of Experience</span></h2>
+          <div className="about-profile-info" style={{ flex: '1 1 80%', textAlign: 'center' }}>
+            <h1 className="about-title" style={{ textAlign: 'center' }}>About Me</h1>
+            <h2 className="about-subtitle" style={{ textAlign: 'center' }}>Frontend Engineer with <span className="about-highlight">5+ Years of Experience</span></h2>
             <p className="about-profile-desc" style={{ textAlign: 'justify' }}>
               I build scalable, high-performance frontend applications using React, JavaScript, GraphQL, and micro-frontend architecture. I’ve collaborated with global teams across the US and Europe on large-scale eCommerce and enterprise platforms, focusing on clean UI architecture, reusable components, and performant user experiences.
 
