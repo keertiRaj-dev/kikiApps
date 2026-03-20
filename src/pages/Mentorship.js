@@ -29,7 +29,7 @@ const Mentorship = () => {
               <li><span className="mentorship-list-icon">❓</span> Previously Asked Interview Questions</li>
               <li><span className="mentorship-list-icon">💡</span> Confidence Building & Career Guidance</li>
             </ul>
-            <button className="mentorship-btn mentorship-btn-primary">Book 1:1 Session</button>
+            <button className="mentorship-btn mentorship-btn-primary" onClick={() => window.open('https://forms.gle/fVAVqyxepMTDXcS5A', '_blank')}>Book 1:1 Session</button>
             <button className="mentorship-btn mentorship-btn-secondary" onClick={() => setShowPopup(true)}>View Details</button>
           </div>
           {/* Group Webinar Card */}
@@ -43,7 +43,7 @@ const Mentorship = () => {
               <li><span className="mentorship-list-icon">📝</span> Interview Preparation</li>
               <li><span className="mentorship-list-icon">🗣️</span> Confidence & Communication</li>
             </ul>
-            <button className="mentorship-btn mentorship-btn-primary">Join Next Webinar</button>
+            <button className="mentorship-btn mentorship-btn-primary" onClick={() => window.open('https://forms.gle/pwC5KFJmf8KkUwbP6', '_blank')}>Join Next Webinar</button>
             <button className="mentorship-btn mentorship-btn-secondary" onClick={() => setShowWebinarPopup(true)}>View Details</button>
           </div>
         </div>

@@ -24,7 +24,7 @@ const WebinarDetailsPopup = ({ open, onClose }) => {
           <div className="webinar-popup-feature">Interview Preparation Tips</div>
           <div className="webinar-popup-feature">Confidence & Communication</div>
         </div>
-        <button className="webinar-popup-cta">Join Webinar Now</button>
+        <button className="webinar-popup-cta" onClick={() => window.open('https://forms.gle/pwC5KFJmf8KkUwbP6', '_blank')}>Join Webinar Now</button>
         <div className="webinar-popup-footer">
           <span>Secure Payment</span>
           <span className="webinar-popup-dot">•</span>

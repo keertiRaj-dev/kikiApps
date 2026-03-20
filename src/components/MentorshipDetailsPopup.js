@@ -89,7 +89,7 @@ const MentorshipDetailsPopup = ({ open, onClose }) => {
 						</div>
 					))}
 				</div>
-				<button className="plan-btn main-btn">BOOK NOW</button>
+				<button className="plan-btn main-btn" onClick={() => window.open('https://forms.gle/fVAVqyxepMTDXcS5A', '_blank')}>BOOK NOW</button>
 				<div className="popup-benefits">
 					<div>
 						<span className="benefit-icon flexible"></span> Flexible Scheduling
