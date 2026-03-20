@@ -81,7 +81,26 @@ function ReviewCard({review}) {
 
 function ReviewCarousel() {
   const [page, setPage] = useState(0);
-  const cardsPerPage = 3;
+  const [cardsPerPage, setCardsPerPage] = useState(() => {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+  });
+
+  React.useEffect(() => {
+    function handleResize() {
+      if (window.innerWidth <= 600) {
+        setCardsPerPage(1);
+      } else if (window.innerWidth <= 900) {
+        setCardsPerPage(2);
+      } else {
+        setCardsPerPage(3);
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const totalPages = Math.ceil(reviews.length / cardsPerPage);
   const start = page * cardsPerPage;
   const visible = reviews.slice(start, start + cardsPerPage);
