@@ -55,7 +55,7 @@ const SKILLS = [
   { label: "Agile/Scrum practices", color: "purple", direction: "from-right" },
 
   // Row 8 (bottom)
-  { label: "Data Structures & Algorithms", color: "orange", direction: "from-bottom" },
+  { label: "DSA", color: "orange", direction: "from-bottom" },
   { label: "Problem Solving", color: "blue", direction: "from-bottom" },
   { label: "Analytical Thinking", color: "purple", direction: "from-bottom" },
   { label: "Leadership", color: "orange", direction: "from-bottom" },
