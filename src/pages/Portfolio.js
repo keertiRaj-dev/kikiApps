@@ -101,11 +101,12 @@ const Portfolio = () => {
 				<p className="portfolio-subtitle">
 					Real production work and UI implementations
 				</p>
-				<div className="portfolio-grid cosmic-grid">
+				<div className="portfolio-grid cosmic-grid" style={{ flexDirection: 'column', alignItems: 'center' }}>
 					{visibleCards.map((card, idx) => (
 						<div
 							className={`portfolio-card cosmic-card cosmic-card-${card.highlight}`}
 							key={idx}
+							style={{ width: '90vw', maxWidth: 600 }}
 						>
 							<div className="portfolio-card-image">
 								<img
