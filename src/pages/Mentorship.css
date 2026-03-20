@@ -288,6 +288,9 @@
   .mentorship-bg {
     padding-bottom: 20px;
   }
+  .mentorship-list li {
+    font-size: 0.85rem;
+  }
 }
 body {
   overflow-x: hidden;
