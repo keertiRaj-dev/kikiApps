@@ -232,12 +232,61 @@
   .mentorship-cards-row, .mentorship-impact-row {
     flex-direction: column;
     gap: 1.2em;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   .neon-card {
-    margin-left: 0;
-    margin-right: 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
     box-sizing: border-box;
     padding-left: 0;
     padding-right: 0;
+    min-width: 0;
+   
   }
+  .mentorship-main-container {
+    padding: 24px 4px 0 4px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .mentorship-impact-item {
+    min-width: 0;
+    width: 100%;
+    max-width: 100vw;
+    padding: 1em 0.8em;
+  }
+}
+@media (max-width: 600px) {
+  .mentorship-title {
+    font-size: 2rem;
+  }
+  .mentorship-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.2em;
+  }
+  .neon-card {
+    padding: 0 0.5em 1.2em 0.5em;
+    border-radius: 12px;
+  }
+  .mentorship-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.6em 1em;
+  }
+  .mentorship-impact-item {
+    padding: 0.8em 0.5em;
+    border-radius: 10px;
+  }
+  .mentorship-main-container {
+    padding: 12px 2px 0 2px;
+  }
+  .mentorship-bg {
+    padding-bottom: 20px;
+  }
+}
+body {
+  overflow-x: hidden;
 }
