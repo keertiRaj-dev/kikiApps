@@ -13,6 +13,7 @@ import recipeimg from "../Assets/recipe.webp"
 import quizimg from "../Assets/quiz.webp"
 import diceimg from "../Assets/dice.jpeg"
 import drumimg from "../Assets/drum.jpeg"
+import ComingSoon from './ComingSoon'
 
 
 const cardContents = [
@@ -84,10 +85,11 @@ const Portfolio = () => {
 	const visibleCards = showAll ? cardContents : cardContents.slice(0, 6);
 
 	const handleOpen = (title) => {
-		if (title === "calculator app") {
+		if (title === "Calculator App") {
 			navigate("/calculator");
+		} else {
+			navigate("/comingsoon");
 		}
-		// Add more logic for other cards if needed
 	};
 
 	return (

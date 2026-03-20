@@ -7,6 +7,7 @@ import Mentorship from './pages/Mentorship';
 import Portfolio from './pages/Portfolio';
 import About from './pages/About';
 import CalculatorPage from './pages/CalculatorPage';
+import ComingSoon from './pages/ComingSoon';
 
 const AppRouter = () => (
   <Router>
@@ -18,6 +19,7 @@ const AppRouter = () => (
       <Route path="/portfolio" element={<Portfolio />} />
       <Route path="/about" element={<About />} />
       <Route path="/calculator" element={<CalculatorPage />} />
+      <Route path="/comingsoon" element={<ComingSoon />} />
     </Routes>
   </Router>
 );
