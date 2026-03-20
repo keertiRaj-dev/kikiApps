@@ -8,12 +8,15 @@
   position: sticky;
   top: 0;
   z-index: 10;
+  flex-direction: row;
 }
 .navbar-logo {
   font-size: 1.6rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: 1px;
+  flex: 1;
+  margin-right: 0;
 }
 .navbar-links {
   display: flex;
@@ -29,21 +32,76 @@
   font-weight: 500;
   cursor: pointer;
 }
-.navbar-links li.active {
-  color: #ffd86b;
-  font-weight: 700;
-  border-bottom: 2px solid #ffd86b;
-  background: rgba(255, 216, 107, 0.08);
-  border-radius: 4px 4px 0 0;
+.navbar-link.active {
+  color: var(--primary-color, #ff6600); /* Use your primary color or any highlight color */
+  text-decoration: none; /* Remove underline */
+  font-weight: 600;
 }
+.navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin-left: 0;
+  position: static;
+}
+.bar {
+  width: 24px;
+  height: 3px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
 @media (max-width: 700px) {
   .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     padding: 1em;
   }
+  .navbar-logo {
+    flex: 1;
+    margin-right: 0;
+  }
+  .navbar-hamburger {
+    display: flex;
+    margin-left: 0;
+    position: static;
+  }
   .navbar-links {
-    gap: 1em;
-    flex-wrap: wrap;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: rgba(20, 28, 48, 0.98);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 1em 0;
+    z-index: 20;
+    box-shadow: 0 2px 16px #00000022;
+    align-items: flex-start;
+    gap: 0.5rem; /* Reduce gap between links */
+  }
+  .navbar-link {
+    padding: 0.5rem 1rem; /* Add left and right padding to each link */
+    margin: 0; /* Remove extra margin */
+    width: 100%; /* Make links fill menu width */
+    box-sizing: border-box;
+    text-align: left;
+  }
+  .navbar-links.open {
+    display: flex;
+    gap: 0.5rem; /* Ensure reduced gap when menu is open */
+  }
+  .navbar-links li {
+    padding: 0.8em 1.2em;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    width: 100%;
+    text-align: left;
   }
 }
