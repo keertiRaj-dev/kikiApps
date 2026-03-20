@@ -147,7 +147,7 @@ const Portfolio = () => {
 				)}
 				<div className="portfolio-idea-section cosmic-idea-section">
 					<h3>Have a project idea?</h3>
-					<button className="portfolio-startproject cosmic-startproject">
+					<button className="portfolio-startproject cosmic-startproject" onClick={() => window.open('https://forms.gle/uYhznwuP4et6j6ex5', '_blank')}>
 						Start a Project
 					</button>
 				</div>
