@@ -23,7 +23,7 @@ const Mentorship = () => {
               1:1 Mentorship <span className="mentorship-star">⭐</span>
             </div>
             <ul className="mentorship-list mentorship-list-left">
-              <li><span className="mentorship-list-icon">📄</span> <b>ATS Optimized</b> Resume Review</li>
+              <li><span className="mentorship-list-icon">📄</span> ATS Optimized Resume Review</li>
               <li><span className="mentorship-list-icon">🔗</span> LinkedIn & Portfolio Improvement</li>
               <li><span className="mentorship-list-icon">🗣️</span> Mock Interviews with Feedback</li>
               <li><span className="mentorship-list-icon">❓</span> Previously Asked Interview Questions</li>
