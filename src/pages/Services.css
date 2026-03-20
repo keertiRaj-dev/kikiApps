@@ -456,11 +456,13 @@
   background: linear-gradient(135deg, #a259ff 60%, #ff6600 100%) !important;
   box-shadow: 0 0 32px 0 var(--accent-orange);
   transform: scale(1.06);
+  color: #fff !important;
 }
 .btn-purple:hover {
   background: var(--accent-orange) !important;
   box-shadow: 0 0 32px 0 var(--accent-orange);
   transform: scale(1.06);
+  color: #fff !important;
 }
 
 @media (max-width: 900px) {
