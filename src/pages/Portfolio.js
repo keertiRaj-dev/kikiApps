@@ -139,6 +139,7 @@ const Portfolio = () => {
 				{!showAll && (
 					<button
 						className="portfolio-loadmore cosmic-loadmore"
+						style={{ background: 'linear-gradient(135deg, #a259ff 60%, #ff6600 100%)', color: '#fff' }}
 						onClick={() => setShowAll(true)}
 					>
 						Load More

@@ -143,8 +143,8 @@
   display: block;
   margin: 32px auto 0 auto;
   padding: 0.85rem 2.8rem;
-  background: linear-gradient(90deg, #3a4a7a 0%, #2b3467 100%);
-  color: #ffd86b;
+  background: linear-gradient(135deg, #a259ff 60%, #ff6600 100%) !important;
+  color: #fff !important;
   border: none;
   border-radius: 10px;
   font-size: 1.1rem;
