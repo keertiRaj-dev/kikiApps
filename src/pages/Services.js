@@ -133,9 +133,8 @@ const Services = () => {
           {processSteps.map((step, i) => (
             <div className="process-bigstep" key={i}>
               <div className="process-stepnum">{step.num}</div>
-              <div className="process-stepicon">{step.icon}</div>
               <div className="process-stepcontent">
-                <div className="process-steptitle">{step.title}</div>
+                <div className="process-steptitle">{step.icon} {step.title}</div>
                 <div className="process-stepdesc">{step.desc}</div>
               </div>
               {i !== processSteps.length - 1 && <div className="process-connector" />}

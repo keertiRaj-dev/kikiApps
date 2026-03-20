@@ -15,7 +15,7 @@
 
 .services-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
   font-weight: 700;
   letter-spacing: 1px;
   text-align: center;
@@ -24,9 +24,9 @@
   text-shadow: none !important;
 }
 
-.solutions-title, .process-title, .project-cta h2 {
+.solutions-title, .process-title, .project-cta h2, .whychoose-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
   font-weight: 700;
   letter-spacing: 1px;
   text-align: center;
@@ -185,7 +185,7 @@
   font-weight: 500;
 }
 .process-bigcard {
-  width: 80%;
+  width: fit-content;
   max-width: 1200px;
   margin: 0 auto 2.5rem auto;
   background: rgba(60, 20, 80, 0.25);
@@ -499,12 +499,25 @@
     padding: 1.2rem 0.5rem 1.2rem 0.5rem;
   }
   .process-bigstep {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 0.7rem;
   }
-  .process-stepnum, .process-stepicon {
-    margin-right: 0.7rem;
+  .process-stepnum {
+    min-width: 32px;
+    min-height: 32px;
+    font-size: 1.05rem;
+    margin-right: 0.5rem;
+    padding: 0;
+  }
+  .process-stepicon {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+    margin-top: 1px;
+  }
+  .process-stepcontent {
+    flex: 1 1 0%;
+    min-width: 0;
   }
   .whychoose-features-grid {
     grid-template-columns: 1fr;
