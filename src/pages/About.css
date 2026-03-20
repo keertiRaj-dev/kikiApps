@@ -578,4 +578,9 @@
     width: 90vw !important;
     max-width: 90vw !important;
   }
+  .about-contact-icon {
+    padding: 0.4rem 0.7rem !important;
+    font-size: 0.95rem !important;
+    min-width: 0 !important;
+  }
 }
