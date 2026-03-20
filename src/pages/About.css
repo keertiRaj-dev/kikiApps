@@ -568,3 +568,14 @@
     padding: 0.5rem 1.2rem;
   }
 }
+
+@media (max-width: 600px) {
+  .about-profile-info {
+    width: 90vw !important;
+    max-width: 90vw !important;
+  }
+  .about-contact-links {
+    width: 90vw !important;
+    max-width: 90vw !important;
+  }
+}
