@@ -421,10 +421,10 @@
   justify-content: center;
   text-align: center;
   margin: 3rem 0 0 0;
-  background: var(--bg-purple);
-  border-radius: 0;
-  box-shadow: none;
-  border: none;
+  background: #a259ff33; /* Same as circle border color */
+  border-radius: 22px;
+  box-shadow: 0 0 32px 0 #a259ff44, 0 0 0 2px #a259ff33;
+  border: 2px solid #a259ff33;
   padding: 2.5rem 1.5rem 2.5rem 1.5rem;
 }
 .project-cta h2,
