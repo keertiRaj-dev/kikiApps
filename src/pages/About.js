@@ -82,10 +82,8 @@ const About = () => {
   return (
     <div className="about-cosmic-bg">
       <div className="about-main-container">
-        <div className="about-profile-section">
-          <div className="about-profile-img-container" style={{ flex: '0 0 40%', maxWidth: '40%' }}>
-            <img src={keertiImg} alt="Keerthi" className="about-profile-img" />
-          </div>
+        <div className="about-profile-section responsive-profile-section">
+          {/* In mobile view, About info comes first */}
           <div className="about-profile-info" style={{ flex: '1 1 80%' }}>
             <h1 className="about-title">About Me</h1>
             <h2 className="about-subtitle">Frontend Engineer with <span className="about-highlight">5+ Years of Experience</span></h2>
@@ -112,6 +110,9 @@ I enjoy solving complex UI challenges and turning product ideas into seamless, i
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 512 512" fill="currentColor"><path d="M502.3 190.8L327.4 338.3c-15.9 13.2-39.8 13.2-55.7 0L9.7 190.8C3.9 186.2 0 178.7 0 170.6V48c0-26.5 21.5-48 48-48h416c26.5 0 48 21.5 48 48v122.6c0 8.1-3.9 15.6-9.7 20.2zM464 64H48C39.2 64 32 71.2 32 80v16.4l224 185.6 224-185.6V80c0-8.8-7.2-16-16-16zm48 106.6V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V170.6l218.7 181.1c27.6 22.8 68.9 22.8 96.5 0L512 170.6z"/></svg>
               </a>
             </div>
+          </div>
+          <div className="about-profile-img-container" style={{ flex: '0 0 40%', maxWidth: '40%' }}>
+            <img src={keertiImg} alt="Keerthi" className="about-profile-img" />
           </div>
         </div>
         <h2 className="about-section-title">Work Experience</h2>
