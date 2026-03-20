@@ -196,3 +196,34 @@
   .popup-plans { flex-direction: column; align-items: center; gap: 18px; }
   .popup-plan-card { min-width: 90vw; max-width: 98vw; }
 }
+
+@media (max-width: 600px) {
+  .mentorship-popup {
+    min-width: 0;
+    max-width: 98vw;
+    width: 98vw;
+    max-height: 98vh;
+    overflow-y: auto;
+    padding: 12px 4px 12px 4px;
+    border-radius: 12px;
+    box-sizing: border-box;
+  }
+  .popup-title {
+    font-size: 1.3rem;
+  }
+  .popup-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1em;
+  }
+  .popup-plans {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .popup-plan-card {
+    min-width: 0;
+    max-width: 98vw;
+    width: 98vw;
+    padding: 12px 6px 12px 6px;
+    border-radius: 10px;
+  }
+}
