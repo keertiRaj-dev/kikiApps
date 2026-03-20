@@ -589,4 +589,26 @@
     width: 90vw !important;
 
   }
+  .skills-flyin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 8px;
+    max-width: 98vw;
+    justify-items: center;
+  }
+  .skill-flyin {
+    min-width: 90px;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    opacity: 0;
+    transform: scale(0.7);
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+  }
+  .skill-flyin-from-left {
+    animation-name: skill-flyin-left;
+  }
+  .skill-flyin-from-right {
+    animation-name: skill-flyin-right;
+  }
 }
