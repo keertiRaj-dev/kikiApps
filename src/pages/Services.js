@@ -38,31 +38,26 @@ const solutions = [
 const processSteps = [
   {
     num: 1,
-    icon: '🔍',
     title: 'Discovery',
     desc: 'Understanding the business goals, users and doing requirement analysis to decide website features.'
   },
   {
     num: 2,
-    icon: '🎨',
     title: 'UI / Screen Design',
     desc: 'Designing the layout and structure of the website to ensure a clean and modern user experience.'
   },
   {
     num: 3,
-    icon: '💻',
     title: 'Development',
     desc: 'Building the website using modern technologies with focus on performance and scalability.'
   },
   {
     num: 4,
-    icon: '🚀',
     title: 'Deployment & Hosting',
     desc: 'Deploying the website to a secure server and making it live on the internet.'
   },
   {
     num: 5,
-    icon: '🛠️',
     title: 'Maintenance & Bug Fixes',
     desc: 'Providing ongoing support, fixing issues and updating the website whenever required.'
   }
@@ -230,7 +225,6 @@ const Services = () => {
           {processSteps.map((step, i) => (
             <div className={`process-tl-step ${i % 2 === 0 ? 'tl-above' : 'tl-below'}`} key={i}>
               <div className="process-tl-card">
-                <div className="process-tl-icon">{step.icon}</div>
                 <div className="process-tl-title">{step.title}</div>
                 <div className="process-tl-desc">{step.desc}</div>
               </div>
