@@ -262,9 +262,6 @@ function TechStackSection({navigate}) {
 const Home = () => {
   const navigate = useNavigate();
   const typedWord = useTypingEffect();
-  const [heroRef, heroVisible] = useScrollReveal();
-  const [carouselRef, carouselVisible] = useScrollReveal();
-  const [techRef, techVisible] = useScrollReveal();
   return (
     <div className="homepage-bg">
       <section className="home-black">
@@ -273,7 +270,7 @@ const Home = () => {
         </div>
         <div className="hero-section">
           <div className="hero-left">
-            <div ref={heroRef} className={`hero-content${heroVisible ? ' reveal' : ''}`}>
+            <div className="hero-content">
               <h1>Building Websites and Developers</h1>
               <p>
                 <span className="typing-word">{typedWord}<span className="typing-cursor">|</span></span>
@@ -290,12 +287,10 @@ const Home = () => {
         </div>
       </section>
       <StatsBar />
-      <section ref={carouselRef} className={`carousel-section${carouselVisible ? ' reveal' : ''}`}>
+      <section className="carousel-section">
         <ReviewCarousel />
       </section>
-      <div ref={techRef} className={techVisible ? 'reveal' : ''}>
-        <TechStackSection navigate={navigate} />
-      </div>
+      <TechStackSection navigate={navigate} />
     </div>
   );
 };
