@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Mentorship from './pages/Mentorship';
@@ -21,6 +22,7 @@ const AppRouter = () => (
       <Route path="/calculator" element={<CalculatorPage />} />
       <Route path="/comingsoon" element={<ComingSoon />} />
     </Routes>
+    <Footer />
   </Router>
 );
 
