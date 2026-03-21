@@ -71,7 +71,7 @@
   font-size: clamp(2.5rem, 4.2vw, 3.8rem);
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.3rem;
 }
 
 .hero-content p {
