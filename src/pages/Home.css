@@ -302,9 +302,9 @@
   max-width: 100%;
   width: 80vw;
   box-sizing: border-box;
-  min-height: 180px;
-  max-height: none;
-  height: auto;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   transition: box-shadow 0.2s;
@@ -316,18 +316,17 @@
 }
 
 .review-text {
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.5rem;
   font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: #e6dceb;
   font-weight: 400;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
-  line-clamp: 5;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  min-height: 3.5em;
-  max-height: 6.5em;
+  flex-shrink: 0;
 }
 
 .review-name {
@@ -546,9 +545,8 @@
     max-width: 90vw;
     padding: 1.2rem 0.8rem 1.2rem 0.8rem;
     font-size: 1rem;
-    min-height: 180px;
-    max-height: none;
-    height: auto;
+    height: 250px;
+    overflow: hidden;
   }
   .carousel-arrow {
     width: 38px;
@@ -602,9 +600,8 @@
   .review-card {
     width: 38vw;
     max-width: 350px;
-    height: auto;
-    min-height: 180px;
-    max-height: none;
+    height: 280px;
+    overflow: hidden;
   }
 }
 
@@ -612,8 +609,7 @@
   .review-card {
     width: 26vw;
     max-width: 320px;
-    height: auto;
-    min-height: 180px;
-    max-height: none;
+    height: 280px;
+    overflow: hidden;
   }
 }
