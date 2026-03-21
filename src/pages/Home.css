@@ -111,11 +111,22 @@
   padding: clamp(1rem, 2vw, 1.4rem) clamp(1rem, 3vw, 2rem);
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
-  border-radius: 8px;
+  border-radius: 2.2rem;
   width: clamp(150px, 30vw, 180px);
   max-width: 100%;
   text-align: center;
+  background: linear-gradient(135deg, #a259ff 60%, #ff6600 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: 0 0 18px 0 #a259ff88 !important;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.hero-buttons .button:hover, .hero-buttons button:hover {
+  background: linear-gradient(135deg, #ff6600 0%, #a259ff 100%) !important;
+  box-shadow: 0 0 32px 0 #a259ffbb !important;
+  transform: scale(1.06);
+  color: #fff !important;
 }
 
 @media (max-width: 900px) {
@@ -496,8 +507,19 @@
   padding: 1.1rem 2.8rem;
   border: none !important;
   outline: none !important;
-  box-shadow: none !important;
-  border-radius: 8px;
+  border-radius: 2.2rem;
+  background: linear-gradient(135deg, #a259ff 60%, #ff6600 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  box-shadow: 0 0 18px 0 #a259ff88 !important;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.tech-cta-buttons .button:hover, .tech-cta-buttons button:hover {
+  background: linear-gradient(135deg, #ff6600 0%, #a259ff 100%) !important;
+  box-shadow: 0 0 32px 0 #a259ffbb !important;
+  transform: scale(1.06);
+  color: #fff !important;
 }
 
 @media (max-width: 600px) {
@@ -541,16 +563,24 @@
     padding-bottom: 1.5rem;
   }
   .tech-cta-buttons {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
     width: 100%;
+    justify-content: center;
     align-items: center;
   }
   .tech-cta-buttons .button, .tech-cta-buttons button {
-    width: 90vw;
-    max-width: 350px;
-    font-size: 1.1rem;
-    padding: 0.9rem 0;
+    width: auto;
+    min-width: 140px;
+    max-width: 45vw;
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: 2.2rem;
+    background: linear-gradient(135deg, #a259ff 60%, #ff6600 100%) !important;
+    color: #fff !important;
+    font-weight: 700;
+    box-shadow: 0 0 18px 0 #a259ff88 !important;
   }
   .tech-title {
     font-size: clamp(1.5rem, 7vw, 2.2rem);
