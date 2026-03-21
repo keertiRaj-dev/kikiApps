@@ -76,7 +76,6 @@ const features = [
 ];
 
 const Services = () => {
-  const processCardRef = useRef(null);
   const cardsListRef = useRef(null);
   const stepsRef = useRef(null);
 
@@ -105,55 +104,34 @@ const Services = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Staggered scroll-reveal for process steps (slide in from left)
+  // Staggered scroll-reveal for process steps
   useEffect(() => {
     const container = stepsRef.current;
     if (!container) return;
-    const steps = Array.from(container.querySelectorAll('.process-bigstep'));
+    const steps = Array.from(container.querySelectorAll('.process-tl-step'));
+    const line = container.querySelector('.process-timeline-line');
 
     const observer = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = steps.indexOf(entry.target);
-            setTimeout(() => {
-              entry.target.classList.add('step-visible');
-            }, index * 150);
+            // Animate the track line
+            if (line) line.classList.add('line-visible');
+            // Stagger each step card
+            steps.forEach((step, index) => {
+              setTimeout(() => {
+                step.classList.add('tl-step-visible');
+              }, index * 200);
+            });
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
-    steps.forEach((step) => observer.observe(step));
+    observer.observe(container);
     return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const card = processCardRef.current;
-    if (!card) return;
-    let timeoutId = null;
-    const handleIntersect = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          card.classList.remove('border-animate');
-          // Force reflow to restart animation
-          void card.offsetWidth;
-          timeoutId = setTimeout(() => {
-            card.classList.add('border-animate');
-          }, 10);
-        } else {
-          card.classList.remove('border-animate');
-        }
-      });
-    };
-    const observer = new window.IntersectionObserver(handleIntersect, { threshold: 0.3 });
-    observer.observe(card);
-    return () => {
-      observer.disconnect();
-      if (timeoutId) clearTimeout(timeoutId);
-    };
   }, []);
 
   return (
@@ -180,20 +158,25 @@ const Services = () => {
         </div>
         <h2 className="process-title">My Website Development Process</h2>
         <div className="process-desc">A simple and structured process to deliver fast, scalable and reliable websites.</div>
-        
-        <div className="process-bigcard" ref={processCardRef}>
-          <div ref={stepsRef} style={{ width: '100%' }}>
+
+        <div className="process-timeline" ref={stepsRef}>
+          <div className="process-timeline-track">
+            <div className="process-timeline-line" />
+          </div>
           {processSteps.map((step, i) => (
-            <div className="process-bigstep" key={i}>
-              <div className="process-stepnum">{step.num}</div>
-              <div className="process-stepcontent">
-                <div className="process-steptitle">{step.icon} {step.title}</div>
-                <div className="process-stepdesc">{step.desc}</div>
+            <div className={`process-tl-step ${i % 2 === 0 ? 'tl-above' : 'tl-below'}`} key={i}>
+              <div className="process-tl-card">
+                <div className="process-tl-icon">{step.icon}</div>
+                <div className="process-tl-title">{step.title}</div>
+                <div className="process-tl-desc">{step.desc}</div>
               </div>
-              {i !== processSteps.length - 1 && <div className="process-connector" />}
+              <div className="process-tl-node">
+                <span className="process-tl-num">{step.num}</span>
+                <div className="process-tl-node-ring" />
+              </div>
+              <div className="process-tl-stem" />
             </div>
           ))}
-          </div>
         </div>
 
         {/* WHY CHOOSE MY SERVICES SECTION */}

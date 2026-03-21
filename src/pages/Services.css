@@ -187,149 +187,216 @@
   text-align: center;
   color: var(--text-main);
   font-size: 1.18rem;
-  margin-bottom: 2.2rem;
+  margin-bottom: 3rem;
   opacity: 0.92;
   font-weight: 500;
 }
-.process-bigcard {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto 2.5rem auto;
-  background: rgba(60, 20, 80, 0.25);
-  border-radius: 22px;
-  box-shadow: none;
-  border: none;
-  padding: 2.5rem 2.2rem 2.2rem 2.2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+
+/* ── HORIZONTAL TIMELINE ── */
+.process-timeline {
   position: relative;
-  overflow: visible;
-  opacity: 0;
-  animation: fade-in-up 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-.process-bigcard::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  border-radius: 22px;
-  border: 2px solid transparent;
-  border-color: transparent;
-  pointer-events: none;
-  z-index: 2;
   width: 100%;
-  height: 100%;
+  max-width: 1100px;
+  margin: 0 auto 4rem auto;
+  padding: 0 1rem;
   box-sizing: border-box;
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 22px;
-  clip-path: inset(0 100% 100% 0 round 22px);
-  animation: none;
 }
-.process-bigcard.border-animate::before {
-  animation: border-draw-anim 4s cubic-bezier(1,1,1,1) forwards, border-color-anim 4s linear forwards;
+
+/* The horizontal track line */
+.process-timeline-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform: translateY(-50%);
+  background: rgba(162, 89, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 0;
 }
-@keyframes border-draw-anim {
-  0% {
-    clip-path: inset(0 100% 100% 0 round 22px);
-  }
-  25% {
-    clip-path: inset(0 0 100% 0 round 22px);
-  }
-  50% {
-    clip-path: inset(0 0 0 0 round 22px);
-  }
-  100% {
-    clip-path: inset(0 0 0 0 round 22px);
-  }
+.process-timeline-line {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(to right, #a259ff, #ff6600);
+  border-radius: 3px;
+  transition: width 1.6s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
 }
-@keyframes border-color-anim {
-  0% {
-    border-color: transparent;
-  }
-  20% {
-    border-color: transparent;
-  }
-  30% {
-    border-color: var(--accent-orange);
-  }
-  100% {
-    border-color: var(--accent-orange);
-  }
+.process-timeline-line.line-visible {
+  width: 100%;
 }
-.process-bigstep {
+
+/* Flex row of steps */
+.process-timeline {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  margin-bottom: 2.2rem;
-  position: relative;
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-              transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
 }
-.process-bigstep.step-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-/* Remove old CSS animation delays */
 
-.process-stepnum {
-  min-width: 44px;
-  min-height: 44px;
-  background: linear-gradient(135deg, #a259ff 60%, #ff6600 100%);
-  color: #fff;
-  font-size: 1.5rem;
+.process-tl-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+/* Odd steps: card above the line */
+.process-tl-step.tl-above {
+  flex-direction: column-reverse;
+  transform: translateY(30px);
+}
+/* Even steps: card below the line */
+.process-tl-step.tl-below {
+  flex-direction: column;
+  transform: translateY(-30px);
+}
+.process-tl-step.tl-step-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* The content card */
+.process-tl-card {
+  background: rgba(60, 20, 80, 0.55);
+  border: 1.5px solid rgba(162, 89, 255, 0.25);
+  border-radius: 16px;
+  padding: 1.2rem 1rem;
+  max-width: 160px;
+  text-align: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 24px 0 #a259ff22;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+}
+.process-tl-card:hover {
+  box-shadow: 0 0 36px 4px #a259ff66;
+  border-color: #a259ff99;
+  transform: scale(1.05);
+}
+.process-tl-icon {
+  font-size: 1.9rem;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 0 6px #a259ffcc);
+}
+.process-tl-title {
+  font-size: 0.95rem;
   font-weight: 700;
+  color: var(--accent-orange);
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+.process-tl-desc {
+  font-size: 0.8rem;
+  color: var(--text-main);
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+/* The stem connecting card to node */
+.process-tl-stem {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, #a259ff88, #ff660088);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.process-tl-step.tl-above .process-tl-stem {
+  background: linear-gradient(to top, #a259ff88, #ff660088);
+}
+
+/* The numbered circle node */
+.process-tl-node {
+  position: relative;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #a259ff 60%, #ff6600 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1.2rem;
-  box-shadow: 0 0 12px #a259ff99;
-  border: 2.5px solid #fff2;
+  box-shadow: 0 0 0 4px rgba(162, 89, 255, 0.2), 0 0 20px #a259ffaa;
+  flex-shrink: 0;
   z-index: 2;
 }
-.process-stepicon {
-  font-size: 2.1rem;
-  margin-right: 1.2rem;
-  margin-top: 2px;
-  filter: drop-shadow(0 0 8px #a259ffcc);
-}
-.process-stepcontent {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.process-steptitle {
-  font-size: 1.25rem;
+.process-tl-num {
+  color: #fff;
   font-weight: 700;
-  color: var(--accent-orange) !important;
-  margin-bottom: 0.3rem;
-}
-.process-stepdesc {
-  font-size: 1.08rem;
-  color: var(--text-main);
-  opacity: 0.93;
-  font-weight: 400;
-}
-.process-connector {
-  position: absolute;
-  left: 22px;
-  top: 44px;
-  width: 2.5px;
-  height: 0;
-  background: linear-gradient(to bottom, #a259ff 0%, #ff6600 100%);
-  opacity: 0.7;
+  font-size: 1.1rem;
+  line-height: 1;
   z-index: 1;
-  border-radius: 2px;
-  transition: height 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
 }
-.process-bigstep.step-visible .process-connector {
-  height: calc(100% - 44px);
+.process-tl-node-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(162, 89, 255, 0.4);
+  animation: ring-pulse 2s ease-in-out infinite;
 }
-.process-bigstep:last-child {
-  margin-bottom: 0;
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50%       { transform: scale(1.18); opacity: 0; }
+}
+
+/* ── MOBILE: switch to vertical ── */
+@media (max-width: 860px) {
+  .process-timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 0.5rem;
+  }
+  .process-timeline-track {
+    top: 0;
+    bottom: 0;
+    left: 22px;
+    right: auto;
+    width: 3px;
+    height: 100%;
+    transform: none;
+  }
+  .process-timeline-line {
+    width: 100% !important;
+    height: 0;
+    transition: height 1.6s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+  }
+  .process-timeline-line.line-visible {
+    width: 100% !important;
+    height: 100%;
+  }
+  .process-tl-step,
+  .process-tl-step.tl-above,
+  .process-tl-step.tl-below {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 1.8rem;
+    transform: translateX(-20px);
+  }
+  .process-tl-step.tl-step-visible {
+    transform: translateX(0);
+  }
+  .process-tl-node {
+    flex-shrink: 0;
+    margin-right: 0;
+  }
+  .process-tl-stem {
+    display: none;
+  }
+  .process-tl-card {
+    max-width: none;
+    flex: 1;
+    text-align: left;
+    margin-left: 1rem;
+  }
+  .process-tl-icon {
+    display: inline;
+    margin-right: 0.3rem;
+    font-size: 1.3rem;
+  }
 }
 
 /* WHY CHOOSE MY SERVICES NEON SECTION */
@@ -506,11 +573,6 @@
     gap: 1.2rem;
     padding: 1.2rem 0.7rem 1.2rem 0.7rem;
   }
-  .process-bigcard {
-    width: 95%;
-    max-width: 98vw;
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-  }
   .whychoose-features-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem 1.2rem;
@@ -527,30 +589,6 @@
   }
   .business-card {
     flex: 0 1 calc((100% - 2 * 0.8rem) / 2);
-  }
-  .process-bigcard {
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
-  }
-  .process-bigstep {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 0.7rem;
-  }
-  .process-stepnum {
-    min-width: 32px;
-    min-height: 32px;
-    font-size: 1.05rem;
-    margin-right: 0.5rem;
-    padding: 0;
-  }
-  .process-stepicon {
-    font-size: 1.3rem;
-    margin-right: 0.5rem;
-    margin-top: 1px;
-  }
-  .process-stepcontent {
-    flex: 1 1 0%;
-    min-width: 0;
   }
   .whychoose-features-grid {
     grid-template-columns: 1fr;
