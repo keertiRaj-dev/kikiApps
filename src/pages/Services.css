@@ -20,7 +20,7 @@
   letter-spacing: 1px;
   text-align: center;
   margin: 0 !important;
-  color: var(--accent-orange) !important;
+  color: #fff !important;
   text-shadow: none !important;
 }
 
@@ -31,8 +31,12 @@
   letter-spacing: 1px;
   text-align: center;
   margin-bottom: 0.5rem;
-  color: var(--accent-orange) !important;
+  color: #fff !important;
   text-shadow: none !important;
+}
+
+.title-highlight {
+  color: var(--accent-orange);
 }
 
 .services-subtitle {
@@ -175,12 +179,6 @@
 }
 
 .process-title {
-  font-size: 2.1rem;
-  color: var(--accent-orange) !important;
-  text-align: center;
-  margin-bottom: 0.2rem;
-  font-weight: 700;
-  text-shadow: none !important;
   margin-top: 5rem;
 }
 .process-desc {
@@ -442,13 +440,7 @@
   align-items: center;
 }
 .whychoose-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.8rem, 3vw, 2.2rem);
-  font-weight: 700;
-  color: var(--accent-orange) !important;
-  text-align: center;
   margin-bottom: 0.5rem;
-  text-shadow: none !important;
 }
 .whychoose-subtitle {
   font-size: 1.1rem;

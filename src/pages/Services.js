@@ -196,7 +196,7 @@ const Services = () => {
   return (
     <div className="services-bg">
       <div className="services-container">
-        <h1 className="services-title">Businesses I Work With</h1>
+        <h1 className="services-title"><span className="title-highlight">Businesses</span> I Work With</h1>
         <p className="services-subtitle">I build websites for a wide range of businesses. Here are some of the types of businesses I help:</p>
          <a
           href="https://forms.gle/gq2oG6YWgP7FsCGw7"
@@ -215,7 +215,7 @@ const Services = () => {
             </div>
           ))}
         </div>
-        <h2 className="process-title">My Website Development Process</h2>
+        <h2 className="process-title">My Website Development <span className="title-highlight">Process</span></h2>
         <div className="process-desc">A simple and structured process to deliver fast, scalable and reliable websites.</div>
 
         <div className="process-timeline" ref={stepsRef}>
@@ -239,7 +239,7 @@ const Services = () => {
 
         {/* WHY CHOOSE MY SERVICES SECTION */}
         <div className="whychoose-section">
-          <h2 className="whychoose-title">Why Choose My Services?</h2>
+          <h2 className="whychoose-title"><span className="title-highlight">Why Choose</span> My Services?</h2>
           <p className="whychoose-subtitle">I deliver websites that are fast, user-friendly, and optimized for success.</p>
           <div className="wc-bento-grid" ref={whychooseRef}>
             {whyChooseItems.map((item, i) => (
@@ -255,7 +255,7 @@ const Services = () => {
         </div>
         </div>
         <div className="project-cta">
-          <h2>Let's Build Your Website</h2>
+          <h2><span className="title-highlight">Let's Build</span> Your Website</h2>
           <p>Whether you are a startup, local business, or growing brand, I can help you create a website that stands out.</p>
           <a
             href="https://forms.gle/gq2oG6YWgP7FsCGw7"
