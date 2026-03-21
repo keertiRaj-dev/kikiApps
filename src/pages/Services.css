@@ -192,12 +192,11 @@
   font-weight: 500;
 }
 .process-bigcard {
-  width: fit-content;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 700px;
   margin: 0 auto 2.5rem auto;
   background: rgba(60, 20, 80, 0.25);
   border-radius: 22px;
-  /* Remove box-shadow and border from here so only the animated border is visible */
   box-shadow: none;
   border: none;
   padding: 2.5rem 2.2rem 2.2rem 2.2rem;
@@ -265,13 +264,15 @@
   margin-bottom: 2.2rem;
   position: relative;
   opacity: 0;
-  animation: fade-in-up 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  transform: translateX(-30px);
+  transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+              transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.process-bigstep:nth-child(1) { animation-delay: 0.5s; }
-.process-bigstep:nth-child(2) { animation-delay: 1s; }
-.process-bigstep:nth-child(3) { animation-delay: 1.5s; }
-.process-bigstep:nth-child(4) { animation-delay: 2s; }
-.process-bigstep:nth-child(5) { animation-delay: 2.5s; }
+.process-bigstep.step-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Remove old CSS animation delays */
 
 .process-stepnum {
   min-width: 44px;
@@ -303,7 +304,7 @@
 .process-steptitle {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--accent) !important;
+  color: var(--accent-orange) !important;
   margin-bottom: 0.3rem;
 }
 .process-stepdesc {
@@ -317,11 +318,15 @@
   left: 22px;
   top: 44px;
   width: 2.5px;
-  height: calc(100% - 44px);
+  height: 0;
   background: linear-gradient(to bottom, #a259ff 0%, #ff6600 100%);
   opacity: 0.7;
   z-index: 1;
   border-radius: 2px;
+  transition: height 0.45s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;
+}
+.process-bigstep.step-visible .process-connector {
+  height: calc(100% - 44px);
 }
 .process-bigstep:last-child {
   margin-bottom: 0;
@@ -406,20 +411,6 @@
 .whychoose-feature:nth-child(7) { animation-delay: 0.8s; }
 .whychoose-feature:nth-child(8) { animation-delay: 0.9s; }
 
-.process-bigstep {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-bottom: 2.2rem;
-  position: relative;
-  opacity: 0;
-  animation: fade-in-up 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-.process-bigstep:nth-child(1) { animation-delay: 0.1s; }
-.process-bigstep:nth-child(2) { animation-delay: 0.2s; }
-.process-bigstep:nth-child(3) { animation-delay: 0.3s; }
-.process-bigstep:nth-child(4) { animation-delay: 0.4s; }
-.process-bigstep:nth-child(5) { animation-delay: 0.5s; }
 
 .project-cta {
   display: flex;

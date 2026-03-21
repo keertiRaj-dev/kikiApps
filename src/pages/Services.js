@@ -78,6 +78,7 @@ const features = [
 const Services = () => {
   const processCardRef = useRef(null);
   const cardsListRef = useRef(null);
+  const stepsRef = useRef(null);
 
   // Staggered scroll-reveal for business cards
   useEffect(() => {
@@ -101,6 +102,31 @@ const Services = () => {
     );
 
     cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
+  // Staggered scroll-reveal for process steps (slide in from left)
+  useEffect(() => {
+    const container = stepsRef.current;
+    if (!container) return;
+    const steps = Array.from(container.querySelectorAll('.process-bigstep'));
+
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = steps.indexOf(entry.target);
+            setTimeout(() => {
+              entry.target.classList.add('step-visible');
+            }, index * 150);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    steps.forEach((step) => observer.observe(step));
     return () => observer.disconnect();
   }, []);
 
@@ -156,6 +182,7 @@ const Services = () => {
         <div className="process-desc">A simple and structured process to deliver fast, scalable and reliable websites.</div>
         
         <div className="process-bigcard" ref={processCardRef}>
+          <div ref={stepsRef} style={{ width: '100%' }}>
           {processSteps.map((step, i) => (
             <div className="process-bigstep" key={i}>
               <div className="process-stepnum">{step.num}</div>
@@ -166,6 +193,7 @@ const Services = () => {
               {i !== processSteps.length - 1 && <div className="process-connector" />}
             </div>
           ))}
+          </div>
         </div>
 
         {/* WHY CHOOSE MY SERVICES SECTION */}
