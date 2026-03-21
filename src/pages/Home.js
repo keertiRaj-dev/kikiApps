@@ -1,10 +1,96 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import MentorshipCard from '../components/MentorshipCard';
 import '../pages/Home.css';
 import laptopImg from '../Assets/laptop.jpg';
+
+// Hook: fade-in + slide-up on scroll
+function useScrollReveal() {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return [ref, visible];
+}
+
+// Hook: animated counter
+function useCounter(target, visible, duration = 1800) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!visible) return;
+    let start = 0;
+    const step = Math.ceil(target / (duration / 16));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(start);
+    }, 16);
+    return () => clearInterval(timer);
+  }, [visible, target, duration]);
+  return count;
+}
+
+// Hook: typing animation
+const typingWords = ['React Apps', 'Business Websites', 'Developer Careers', 'Your Dreams'];
+function useTypingEffect() {
+  const [displayed, setDisplayed] = useState('');
+  const [wordIdx, setWordIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+  useEffect(() => {
+    const word = typingWords[wordIdx];
+    let timeout;
+    if (!deleting && charIdx <= word.length) {
+      timeout = setTimeout(() => setCharIdx(c => c + 1), 80);
+    } else if (!deleting && charIdx > word.length) {
+      timeout = setTimeout(() => setDeleting(true), 1200);
+    } else if (deleting && charIdx >= 0) {
+      timeout = setTimeout(() => setCharIdx(c => c - 1), 45);
+    } else {
+      setDeleting(false);
+      setWordIdx(i => (i + 1) % typingWords.length);
+    }
+    setDisplayed(word.slice(0, charIdx));
+    return () => clearTimeout(timeout);
+  }, [charIdx, deleting, wordIdx]);
+  return displayed;
+}
+
+// Stats bar component
+function StatsBar() {
+  const [ref, visible] = useScrollReveal();
+  const websites = useCounter(50, visible);
+  const students = useCounter(100, visible);
+  const rating = useCounter(49, visible);
+  return (
+    <div ref={ref} className={`stats-bar${visible ? ' reveal' : ''}`}>
+      <div className="stat-item">
+        <span className="stat-number">{websites}+</span>
+        <span className="stat-label">Websites Built</span>
+      </div>
+      <div className="stat-divider" />
+      <div className="stat-item">
+        <span className="stat-number">{students}+</span>
+        <span className="stat-label">Students Mentored</span>
+      </div>
+      <div className="stat-divider" />
+      <div className="stat-item">
+        <span className="stat-number">{(rating / 10).toFixed(1)}★</span>
+        <span className="stat-label">Average Rating</span>
+      </div>
+    </div>
+  );
+}
 
 const reviews = [
   {
@@ -170,6 +256,10 @@ function TechStackSection({navigate}) {
 
 const Home = () => {
   const navigate = useNavigate();
+  const typedWord = useTypingEffect();
+  const [heroRef, heroVisible] = useScrollReveal();
+  const [carouselRef, carouselVisible] = useScrollReveal();
+  const [techRef, techVisible] = useScrollReveal();
   return (
     <div className="homepage-bg">
       <section className="home-black">
@@ -178,9 +268,11 @@ const Home = () => {
         </div>
         <div className="hero-section">
           <div className="hero-left">
-            <div className="hero-content">
+            <div ref={heroRef} className={`hero-content${heroVisible ? ' reveal' : ''}`}>
               <h1>Building Websites and Developers</h1>
-              <p>Code - Create - Mentor</p>
+              <p>
+                <span className="typing-word">{typedWord}<span className="typing-cursor">|</span></span>
+              </p>
               <div className="hero-buttons">
                 <Button onClick={() => navigate('/services')}>Get a Website</Button>
                 <Button variant="secondary" onClick={() => navigate('/mentorship')}>Get Mentorship</Button>
@@ -192,10 +284,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="carousel-section">
+      <StatsBar />
+      <section ref={carouselRef} className={`carousel-section${carouselVisible ? ' reveal' : ''}`}>
         <ReviewCarousel />
       </section>
-      <TechStackSection navigate={navigate} />
+      <div ref={techRef} className={techVisible ? 'reveal' : ''}>
+        <TechStackSection navigate={navigate} />
+      </div>
     </div>
   );
 };

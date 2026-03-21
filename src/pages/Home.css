@@ -245,6 +245,99 @@
   }
 }
 
+/* Scroll Reveal Animation */
+.reveal {
+  animation: revealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing animation */
+.typing-word {
+  color: #a259ff;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  display: inline-block;
+  min-height: 1.4em;
+}
+
+.typing-cursor {
+  display: inline-block;
+  color: #ff6600;
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Stats Bar */
+.stats-bar {
+  width: 100%;
+  background: linear-gradient(90deg, #0a0612 0%, #1a0933 50%, #0a0612 100%);
+  border-top: 1.5px solid #a259ff33;
+  border-bottom: 1.5px solid #a259ff33;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 2rem 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.stats-bar.reveal {
+  opacity: 1;
+  transform: translateY(0);
+  animation: none;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  gap: 0.3rem;
+}
+
+.stat-number {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ff6600, #a259ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.stat-label {
+  color: #c9b8d3;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.stat-divider {
+  width: 1.5px;
+  height: 56px;
+  background: linear-gradient(180deg, transparent, #a259ff66, transparent);
+  flex-shrink: 0;
+}
+
 /* Review Carousel Styles */
 .carousel-section {
   width: 100vw;
@@ -573,6 +666,16 @@
   }
   .carousel-section {
     padding-bottom: 1.5rem;
+  }
+  .stats-bar {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.8rem 1rem;
+  }
+  .stat-divider {
+    width: 60px;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #a259ff66, transparent);
   }
   .tech-cta-buttons {
     flex-direction: row;
