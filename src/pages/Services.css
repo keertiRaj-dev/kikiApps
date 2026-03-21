@@ -378,21 +378,24 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    padding: 0 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
+    position: relative;
   }
   .process-timeline-track {
-    top: 0;
-    bottom: 0;
-    left: 22px;
+    top: 23px;        /* half of node height (46px/2) so line starts at node center */
+    bottom: 23px;     /* ends at last node center */
+    left: 23px;       /* half of node width so line runs through center */
     right: auto;
     width: 3px;
-    height: 100%;
+    height: auto;
     transform: none;
+    overflow: visible;
   }
   .process-timeline-line {
-    width: 100% !important;
-    height: 0;
-    transition: height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    width: 3px !important;
+    height: 0 !important;
+    background: linear-gradient(to bottom, #a259ff, #ff6600);
+    transition: height 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .process-tl-step,
   .process-tl-step.tl-above,
@@ -402,6 +405,9 @@
     width: 100%;
     margin-bottom: 1.8rem;
     transform: translateX(-20px);
+  }
+  .process-tl-step:last-child {
+    margin-bottom: 0;
   }
   .process-tl-step.tl-step-visible {
     transform: translateX(0);

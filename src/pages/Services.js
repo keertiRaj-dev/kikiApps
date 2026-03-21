@@ -111,18 +111,43 @@ const Services = () => {
     const steps = Array.from(container.querySelectorAll('.process-tl-step'));
     const line = container.querySelector('.process-timeline-line');
 
-    const updateLine = (visibleCount) => {
+    const isMobile = () => window.innerWidth <= 860;
+
+    const updateLine = () => {
       if (!line) return;
-      const pct = Math.round((visibleCount / steps.length) * 100);
-      line.style.width = `${pct}%`;
-      line.style.height = `${pct}%`;
+      const visibleSteps = steps.filter(s => s.classList.contains('tl-step-visible'));
+      if (visibleSteps.length === 0) {
+        line.style.width = '0%';
+        line.style.height = '0px';
+        return;
+      }
+      if (isMobile()) {
+        // On mobile: line grows top-to-bottom
+        // Measure from first node center to last visible node center
+        const track = container.querySelector('.process-timeline-track');
+        if (!track) return;
+        const trackTop = track.getBoundingClientRect().top;
+        const lastVisible = visibleSteps[visibleSteps.length - 1];
+        const lastNode = lastVisible.querySelector('.process-tl-node');
+        if (!lastNode) return;
+        const nodeRect = lastNode.getBoundingClientRect();
+        const nodeCenterY = nodeRect.top + nodeRect.height / 2;
+        const trackRect = track.getBoundingClientRect();
+        const height = Math.max(0, nodeCenterY - trackRect.top);
+        line.style.width = '3px';
+        line.style.height = height + 'px';
+      } else {
+        // On desktop: line grows left-to-right as percentage
+        const pct = Math.round((visibleSteps.length / steps.length) * 100);
+        line.style.width = `${pct}%`;
+        line.style.height = '100%';
+      }
     };
 
     const stepObserver = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Force reflow so CSS animations restart cleanly on re-entry
             entry.target.classList.remove('tl-step-visible');
             void entry.target.offsetWidth;
             entry.target.classList.add('tl-step-visible');
@@ -130,15 +155,17 @@ const Services = () => {
             entry.target.classList.remove('tl-step-visible');
           }
         });
-        // Recount visible steps to update line
-        const visibleCount = steps.filter(s => s.classList.contains('tl-step-visible')).length;
-        updateLine(visibleCount);
+        updateLine();
       },
       { threshold: 0.4 }
     );
 
     steps.forEach((step) => stepObserver.observe(step));
-    return () => stepObserver.disconnect();
+    window.addEventListener('resize', updateLine);
+    return () => {
+      stepObserver.disconnect();
+      window.removeEventListener('resize', updateLine);
+    };
   }, []);
 
   return (
