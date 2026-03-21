@@ -275,6 +275,10 @@
   text-align: center;
 }
 
+.carousel-title-highlight {
+  color: #ff6600;
+}
+
 .carousel-row {
   display: flex;
   flex-direction: row;

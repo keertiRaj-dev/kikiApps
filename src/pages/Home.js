@@ -105,7 +105,7 @@ function ReviewCarousel() {
   const visible = reviews.slice(start, start + cardsPerPage);
   return (
     <div className="carousel-bg">
-      <h2 className="carousel-title">Client & Student Reviews</h2>
+      <h2 className="carousel-title">Clients & Students <span className="carousel-title-highlight">Reviews</span></h2>
       <div className="carousel-row">
         <button className="carousel-arrow" onClick={()=>setPage(p=>p>0?p-1:totalPages-1)}>&lt;</button>
         <div className="carousel-cards">
@@ -141,7 +141,7 @@ function TechStackSection({navigate}) {
   const techs = [...techStack, ...techStack];
   return (
     <section className="tech-section">
-      <h2 className="tech-title">Technologies I Work With</h2>
+      <h2 className="tech-title"><span className="carousel-title-highlight">Technologies</span> I Work With</h2>
       <div className="tech-grid">
         <div className="tech-slider">
           {techs.map((tech, i) => (
@@ -153,7 +153,7 @@ function TechStackSection({navigate}) {
         </div>
       </div>
       <div className="tech-cta">
-        <h2 className="tech-cta-title">Let’s Build Something Together</h2>
+        <h2 className="tech-cta-title">Let’s <span className="carousel-title-highlight">Build Something</span> Together</h2>
         <div className="tech-cta-desc">Need a website for your business or guidance for your developer journey?</div>
         <div className="tech-cta-buttons">
           <Button onClick={() => navigate('/services')}>Get a Website</Button>
