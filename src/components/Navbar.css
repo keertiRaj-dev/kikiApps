@@ -9,6 +9,8 @@
   top: 0;
   z-index: 10;
   flex-direction: row;
+  height: var(--navbar-height, 60px);
+  box-sizing: border-box;
 }
 .navbar-logo {
   font-size: 1.6rem;

@@ -9,6 +9,7 @@
   --black: #000000;
   --text-main: #E6DCEB;
   --text-muted: #C9B8D3;
+  --navbar-height: 60px;
 }
 
 body, html {
