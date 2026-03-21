@@ -68,16 +68,21 @@ const processSteps = [
   }
 ];
 
-const features = [
-  { icon: '✅', label: 'Fast Loading Pages' },
-  { icon: '✅', label: 'Modern UI Design' },
-  { icon: '✅', label: 'SEO Friendly Structure' },
-  { icon: '✅', label: 'Easy Navigation' },
+const whyChooseItems = [
+  { icon: '🏎️', label: 'Fast Loading Pages',   desc: 'Optimised for speed — loads under 2 seconds on any device.' },
+  { icon: '🖥️', label: 'Modern UI Design',      desc: 'Pixel-perfect designs that leave a lasting first impression.' },
+  { icon: '📈', label: 'SEO Friendly',           desc: 'Built with clean code and structure search engines love.' },
+  { icon: '🧭', label: 'Easy Navigation',        desc: 'Intuitive layouts so visitors find what they need instantly.' },
+  { icon: '💻', label: 'Responsive Design',      desc: 'Looks flawless on every screen — desktop, tablet or phone.' },
+  { icon: '📱', label: 'Mobile Optimized',       desc: 'Touch-friendly and smooth on every mobile device.' },
+  { icon: '📊', label: 'Scalable for Growth',    desc: 'Architecture ready to grow as your business grows.' },
+  { icon: '🛡️', label: 'Secure & Reliable',     desc: 'Best practices for security, uptime and data protection.' },
 ];
 
 const Services = () => {
   const cardsListRef = useRef(null);
   const stepsRef = useRef(null);
+  const whychooseRef = useRef(null);
 
   // Staggered scroll-reveal for business cards
   useEffect(() => {
@@ -168,6 +173,31 @@ const Services = () => {
     };
   }, []);
 
+  // Scroll-reveal for Why Choose items — re-triggers on every scroll
+  useEffect(() => {
+    const grid = whychooseRef.current;
+    if (!grid) return;
+    const items = Array.from(grid.querySelectorAll('.wc-item'));
+
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('wc-visible');
+            void entry.target.offsetWidth;
+            entry.target.classList.add('wc-visible');
+          } else {
+            entry.target.classList.remove('wc-visible');
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="services-bg">
       <div className="services-container">
@@ -217,39 +247,16 @@ const Services = () => {
         <div className="whychoose-section">
           <h2 className="whychoose-title">Why Choose My Services?</h2>
           <p className="whychoose-subtitle">I deliver websites that are fast, user-friendly, and optimized for success.</p>
-          <div className="whychoose-features-grid">
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">🏎️</span>
-              <span className="whychoose-label">Fast Loading Pages</span>
-            </div>
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">🖥️</span>
-              <span className="whychoose-label">Modern UI Design</span>
-            </div>
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">📈</span>
-              <span className="whychoose-label">SEO Friendly</span>
-            </div>
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">🧭</span>
-              <span className="whychoose-label">Easy Navigation</span>
-            </div>
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">💻</span>
-              <span className="whychoose-label">Responsive Design</span>
-            </div>
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">📱</span>
-              <span className="whychoose-label">Mobile Optimized</span>
-            </div>
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">📊</span>
-              <span className="whychoose-label">Scalable for Growth</span>
-            </div>
-            <div className="whychoose-feature">
-              <span className="whychoose-icon">🛡️</span>
-              <span className="whychoose-label">Secure & Reliable</span>
-            </div>
+          <div className="wc-bento-grid" ref={whychooseRef}>
+            {whyChooseItems.map((item, i) => (
+              <div className="wc-item" key={i} style={{ '--i': i }}>
+                <div className="wc-item-glow" />
+                <div className="wc-item-icon">{item.icon}</div>
+                <div className="wc-item-label">{item.label}</div>
+                <div className="wc-item-desc">{item.desc}</div>
+                <div className="wc-item-line" />
+              </div>
+            ))}
           </div>
         </div>
         </div>
