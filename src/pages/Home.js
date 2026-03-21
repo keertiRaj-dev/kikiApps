@@ -6,7 +6,7 @@ import MentorshipCard from '../components/MentorshipCard';
 import '../pages/Home.css';
 import laptopImg from '../Assets/laptop.jpg';
 
-// Hook: fade-in + slide-up on scroll
+// Hook: triggers true/false every time element enters/leaves viewport
 function useScrollReveal() {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -14,8 +14,8 @@ function useScrollReveal() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
-      { threshold: 0.15 }
+      ([entry]) => { setVisible(entry.isIntersecting); },
+      { threshold: 0.3 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -23,19 +23,24 @@ function useScrollReveal() {
   return [ref, visible];
 }
 
-// Hook: animated counter
+// Hook: animated counter — all counters finish at exactly the same time
 function useCounter(target, visible, duration = 1800) {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    if (!visible) return;
-    let start = 0;
-    const step = Math.ceil(target / (duration / 16));
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= target) { setCount(target); clearInterval(timer); }
-      else setCount(start);
-    }, 16);
-    return () => clearInterval(timer);
+    if (!visible) { setCount(0); return; }
+    const startTime = performance.now();
+    let raf;
+    function tick(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out: fast start, slow finish
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+      else setCount(target);
+    }
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
   }, [visible, target, duration]);
   return count;
 }
@@ -69,9 +74,9 @@ function useTypingEffect() {
 // Stats bar component
 function StatsBar() {
   const [ref, visible] = useScrollReveal();
-  const websites = useCounter(50, visible);
-  const students = useCounter(100, visible);
-  const rating = useCounter(49, visible);
+  const websites = useCounter(50, visible, 1800);
+  const students = useCounter(100, visible, 1800);
+  const rating = useCounter(49, visible, 1800);
   return (
     <div ref={ref} className={`stats-bar${visible ? ' reveal' : ''}`}>
       <div className="stat-item">
