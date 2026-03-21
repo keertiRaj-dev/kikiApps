@@ -220,11 +220,10 @@
   width: 0;
   background: linear-gradient(to right, #a259ff, #ff6600);
   border-radius: 3px;
-  transition: width 1.6s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
+  transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.process-timeline-line.line-visible {
-  width: 100%;
-}
+/* line-visible class no longer needed — JS drives width directly */
 
 /* Flex row of steps */
 .process-timeline {
@@ -248,19 +247,30 @@
 /* Odd steps: card above the line */
 .process-tl-step.tl-above {
   flex-direction: column-reverse;
-  transform: translateY(30px);
+  transform: translateY(40px);
 }
 /* Even steps: card below the line */
 .process-tl-step.tl-below {
   flex-direction: column;
-  transform: translateY(-30px);
+  transform: translateY(-40px);
 }
 .process-tl-step.tl-step-visible {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* The content card */
+/* Node pop burst when step becomes visible */
+.process-tl-step.tl-step-visible .process-tl-node {
+  animation: node-pop 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+.process-tl-step:not(.tl-step-visible) .process-tl-node {
+  animation: none;
+}
+@keyframes node-pop {
+  0%   { transform: scale(0.5); box-shadow: 0 0 0 0 #a259ffcc; }
+  60%  { transform: scale(1.22); box-shadow: 0 0 28px 10px #a259ff88; }
+  100% { transform: scale(1);   box-shadow: 0 0 0 4px rgba(162,89,255,0.2), 0 0 20px #a259ffaa; }
+}
+/* Card shimmer sweep on reveal */
 .process-tl-card {
   background: rgba(60, 20, 80, 0.55);
   border: 1.5px solid rgba(162, 89, 255, 0.25);
@@ -271,6 +281,27 @@
   backdrop-filter: blur(8px);
   box-shadow: 0 0 24px 0 #a259ff22;
   transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+  overflow: hidden;
+  position: relative;
+}
+.process-tl-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+}
+.process-tl-step.tl-step-visible .process-tl-card::after {
+  animation: card-shimmer 0.7s ease-out 0.25s forwards;
+}
+.process-tl-step:not(.tl-step-visible) .process-tl-card::after {
+  animation: none;
+  left: -100%;
+}
+@keyframes card-shimmer {
+  0%   { left: -100%; }
+  100% { left: 160%; }
 }
 .process-tl-card:hover {
   box-shadow: 0 0 36px 4px #a259ff66;
@@ -361,11 +392,7 @@
   .process-timeline-line {
     width: 100% !important;
     height: 0;
-    transition: height 1.6s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;
-  }
-  .process-timeline-line.line-visible {
-    width: 100% !important;
-    height: 100%;
+    transition: height 0.6s cubic-bezier(0.23, 1, 0.32, 1);
   }
   .process-tl-step,
   .process-tl-step.tl-above,

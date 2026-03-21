@@ -104,34 +104,41 @@ const Services = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Staggered scroll-reveal for process steps
+  // Scroll-reveal for process timeline — re-triggers on every scroll
   useEffect(() => {
     const container = stepsRef.current;
     if (!container) return;
     const steps = Array.from(container.querySelectorAll('.process-tl-step'));
     const line = container.querySelector('.process-timeline-line');
 
-    const observer = new window.IntersectionObserver(
+    const updateLine = (visibleCount) => {
+      if (!line) return;
+      const pct = Math.round((visibleCount / steps.length) * 100);
+      line.style.width = `${pct}%`;
+      line.style.height = `${pct}%`;
+    };
+
+    const stepObserver = new window.IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Animate the track line
-            if (line) line.classList.add('line-visible');
-            // Stagger each step card
-            steps.forEach((step, index) => {
-              setTimeout(() => {
-                step.classList.add('tl-step-visible');
-              }, index * 200);
-            });
-            observer.unobserve(entry.target);
+            // Force reflow so CSS animations restart cleanly on re-entry
+            entry.target.classList.remove('tl-step-visible');
+            void entry.target.offsetWidth;
+            entry.target.classList.add('tl-step-visible');
+          } else {
+            entry.target.classList.remove('tl-step-visible');
           }
         });
+        // Recount visible steps to update line
+        const visibleCount = steps.filter(s => s.classList.contains('tl-step-visible')).length;
+        updateLine(visibleCount);
       },
-      { threshold: 0.1 }
+      { threshold: 0.4 }
     );
 
-    observer.observe(container);
-    return () => observer.disconnect();
+    steps.forEach((step) => stepObserver.observe(step));
+    return () => stepObserver.disconnect();
   }, []);
 
   return (
