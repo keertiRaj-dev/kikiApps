@@ -15,53 +15,52 @@ const reviews = [
   },
   {
     stars: 5,
-    text: 'The mentorship sessions helped me understand React concepts clearly and prepare for interviews confidently.',
+    text: 'The mentorship sessions helped me understand React concepts clearly and prepare for interviews confidently. Got placed within 2 months!',
     name: 'Priya Verma',
     role: 'Frontend Developer',
   },
   {
     stars: 5,
-    text: 'Very smooth experience working together. The website was delivered quickly and works perfectly on all devices.',
+    text: 'Very smooth experience working together. The website was delivered on time and works perfectly on all devices. Our sales improved noticeably.',
     name: 'Rohit Jain',
     role: 'Business Owner',
   },
-   {
+  {
     stars: 5,
-    text: 'Kiki built our website exactly how we imagined it. The design is modern, fast and responsive. Highly recommended for any business website.',
-    name: 'Amit Sharma',
-    role: 'Startup Founder',
+    text: 'Keerti explained complex JavaScript concepts in a very simple way. The 1-on-1 sessions were extremely focused and productive.',
+    name: 'Sneha Patil',
+    role: 'React Developer',
   },
   {
     stars: 5,
-    text: 'The mentorship sessions helped me understand React concepts clearly and prepare for interviews confidently.',
-    name: 'Priya Verma',
-    role: 'Frontend Developer',
+    text: 'Our restaurant website looks absolutely stunning. Customers keep complimenting it. The online menu and contact section work flawlessly.',
+    name: 'Vikram Nair',
+    role: 'Restaurant Owner',
   },
   {
     stars: 5,
-    text: 'Very smooth experience working together. The website was delivered quickly and works perfectly on all devices.',
-    name: 'Rohit Jain',
-    role: 'Business Owner',
-  },
-   {
-    stars: 5,
-    text: 'Kiki built our website exactly how we imagined it. The design is modern, fast and responsive. Highly recommended for any business website.',
-    name: 'Amit Sharma',
-    role: 'Startup Founder',
+    text: 'I was stuck with DSA and frontend interviews. After just 4 sessions, I felt so much more confident. Highly recommend for anyone preparing for product companies.',
+    name: 'Arjun Mehta',
+    role: 'Software Engineer',
   },
   {
     stars: 5,
-    text: 'The mentorship sessions helped me understand React concepts clearly and prepare for interviews confidently.',
-    name: 'Priya Verma',
-    role: 'Frontend Developer',
+    text: 'The portfolio website Kiki built for me helped me land my first freelance client within a week of launch. Clean design and super fast loading.',
+    name: 'Divya Rao',
+    role: 'Freelance Designer',
   },
   {
     stars: 5,
-    text: 'Very smooth experience working together. The website was delivered quickly and works perfectly on all devices.',
-    name: 'Rohit Jain',
-    role: 'Business Owner',
+    text: 'Professional, responsive and great at communication. The landing page converted really well for our product launch campaign.',
+    name: 'Saurabh Kulkarni',
+    role: 'Product Manager',
   },
-  // Add more reviews if needed
+  {
+    stars: 5,
+    text: 'Got clarity on React hooks, Redux and system design through the mentorship. The structured roadmap Keerti provided was a game changer for my career.',
+    name: 'Neha Gupta',
+    role: 'Junior Developer',
+  },
 ];
 
 function StarRow() {
