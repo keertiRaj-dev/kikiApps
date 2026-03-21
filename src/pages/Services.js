@@ -77,6 +77,32 @@ const features = [
 
 const Services = () => {
   const processCardRef = useRef(null);
+  const cardsListRef = useRef(null);
+
+  // Staggered scroll-reveal for business cards
+  useEffect(() => {
+    const list = cardsListRef.current;
+    if (!list) return;
+    const cards = Array.from(list.querySelectorAll('.business-card'));
+
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = cards.indexOf(entry.target);
+            setTimeout(() => {
+              entry.target.classList.add('card-visible');
+            }, index * 80);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const card = processCardRef.current;
@@ -118,7 +144,7 @@ const Services = () => {
         >
           Start Your Project
         </a>
-        <div className="businesses-cards-list">
+        <div className="businesses-cards-list" ref={cardsListRef}>
           {businesses.map((b, i) => (
             <div className="business-card" key={i}>
               <span className="business-icon">{b.icon}</span>
