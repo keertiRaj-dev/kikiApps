@@ -157,8 +157,8 @@ function TechStackSection({navigate}) {
         <h2 className="tech-cta-title">Let’s Build Something Together</h2>
         <div className="tech-cta-desc">Need a website for your business or guidance for your developer journey?</div>
         <div className="tech-cta-buttons">
-          <Button onClick={() => navigate('/services')}>Hire Me</Button>
-          <Button onClick={() => navigate('/mentorship')}>Book Mentorship</Button>
+          <Button onClick={() => navigate('/services')}>Get a Website</Button>
+          <Button onClick={() => navigate('/mentorship')}>Get Mentorship</Button>
         </div>
       </div>
     </section>
