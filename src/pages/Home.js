@@ -171,6 +171,9 @@ function ReviewCard({review}) {
 
 function ReviewCarousel() {
   const [page, setPage] = useState(0);
+  const [animKey, setAnimKey] = useState(0);
+  const [direction, setDirection] = useState('right');
+  const [paused, setPaused] = useState(false);
   const [cardsPerPage, setCardsPerPage] = useState(() => {
     if (window.innerWidth <= 600) return 1;
     if (window.innerWidth <= 900) return 2;
@@ -179,39 +182,64 @@ function ReviewCarousel() {
 
   React.useEffect(() => {
     function handleResize() {
-      if (window.innerWidth <= 600) {
-        setCardsPerPage(1);
-      } else if (window.innerWidth <= 900) {
-        setCardsPerPage(2);
-      } else {
-        setCardsPerPage(3);
-      }
+      if (window.innerWidth <= 600) setCardsPerPage(1);
+      else if (window.innerWidth <= 900) setCardsPerPage(2);
+      else setCardsPerPage(3);
     }
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const totalPages = Math.ceil(reviews.length / cardsPerPage);
+
+  const goTo = (newPage, dir = 'right') => {
+    setDirection(dir);
+    setPage(newPage);
+    setAnimKey(k => k + 1);
+  };
+
+  // Auto-play every 4 seconds, pause on hover
+  React.useEffect(() => {
+    if (paused) return;
+    const timer = setInterval(() => {
+      goTo((page + 1) % totalPages, 'right');
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [page, paused, totalPages]);
+
   const start = page * cardsPerPage;
   const visible = reviews.slice(start, start + cardsPerPage);
+
   return (
-    <div className="carousel-bg">
+    <div
+      className="carousel-bg"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
       <h2 className="carousel-title">Clients & Students <span className="carousel-title-highlight">Reviews</span></h2>
       <div className="carousel-row">
-        <button className="carousel-arrow" onClick={()=>setPage(p=>p>0?p-1:totalPages-1)}>
+        <button className="carousel-arrow" onClick={() => goTo(page > 0 ? page - 1 : totalPages - 1, 'left')}>
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
-        <div className="carousel-cards">
-          {visible.map((r,i)=>(<ReviewCard review={r} key={i}/>))}
+        <div className={`carousel-cards carousel-anim-${direction}`} key={animKey}>
+          {visible.map((r, i) => (
+            <div className="review-card-wrapper" key={i} style={{ animationDelay: `${i * 80}ms` }}>
+              <ReviewCard review={r} />
+            </div>
+          ))}
         </div>
-        <button className="carousel-arrow" onClick={()=>setPage(p=>(p+1)%totalPages)}>
+        <button className="carousel-arrow" onClick={() => goTo((page + 1) % totalPages, 'right')}>
           <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
       <div className="carousel-dots">
-        {Array.from({length: totalPages}).map((_,i)=>(
-          <span key={i} className={i===page?"carousel-dot active":"carousel-dot"} onClick={()=>setPage(i)}></span>
+        {Array.from({ length: totalPages }).map((_, i) => (
+          <span key={i} className={i === page ? 'carousel-dot active' : 'carousel-dot'} onClick={() => goTo(i, i > page ? 'right' : 'left')} />
         ))}
+      </div>
+      {/* Auto-play progress bar */}
+      <div className="carousel-progress-bar">
+        <div className={`carousel-progress-fill${paused ? ' paused' : ''}`} key={`${animKey}-progress`} />
       </div>
     </div>
   );

@@ -390,6 +390,66 @@
   justify-content: center;
 }
 
+/* Slide-in from right */
+.carousel-anim-right {
+  animation: slideInRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Slide-in from left */
+.carousel-anim-left {
+  animation: slideInLeft 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Staggered card wrapper */
+.review-card-wrapper {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  animation: cardFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cardFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Auto-play progress bar */
+.carousel-progress-bar {
+  width: 220px;
+  height: 3px;
+  background: #2a1a3d;
+  border-radius: 2px;
+  margin-top: 1.2rem;
+  overflow: hidden;
+}
+
+.carousel-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff6600, #a259ff);
+  border-radius: 2px;
+  animation: progressFill 4s linear forwards;
+}
+
+.carousel-progress-fill.paused {
+  animation-play-state: paused;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
 .review-card {
   background: rgba(60, 20, 80, 0.25);
   border-radius: 18px;
@@ -397,19 +457,20 @@
   padding: 2.5rem 2.2rem 2.2rem 2.2rem;
   min-width: 0;
   max-width: 100%;
-  width: 80vw;
+  width: 100%;
   box-sizing: border-box;
   height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
   overflow: hidden;
 }
 
 .review-card:hover {
   box-shadow: 0 0 48px 0 #a259ff99, 0 0 0 2px #a259ff;
+  transform: translateY(-4px);
 }
 
 .review-text {
