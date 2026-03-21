@@ -107,11 +107,15 @@ function ReviewCarousel() {
     <div className="carousel-bg">
       <h2 className="carousel-title">Clients & Students <span className="carousel-title-highlight">Reviews</span></h2>
       <div className="carousel-row">
-        <button className="carousel-arrow" onClick={()=>setPage(p=>p>0?p-1:totalPages-1)}>&lt;</button>
+        <button className="carousel-arrow" onClick={()=>setPage(p=>p>0?p-1:totalPages-1)}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
         <div className="carousel-cards">
           {visible.map((r,i)=>(<ReviewCard review={r} key={i}/>))}
         </div>
-        <button className="carousel-arrow" onClick={()=>setPage(p=>(p+1)%totalPages)}>&gt;</button>
+        <button className="carousel-arrow" onClick={()=>setPage(p=>(p+1)%totalPages)}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
       <div className="carousel-dots">
         {Array.from({length: totalPages}).map((_,i)=>(

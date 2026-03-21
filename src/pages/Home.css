@@ -347,10 +347,10 @@
 }
 
 .carousel-arrow {
-  background: rgba(162,89,255,0.12);
+  background: none !important;
   border: none;
-  color: #fff;
-  font-size: 2.5rem;
+  color: #ff6600;
+  font-size: 0;
   border-radius: 50%;
   width: 54px;
   height: 54px;
@@ -359,11 +359,21 @@
   justify-content: center;
   margin: 0 1.2rem;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: color 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.carousel-arrow svg {
+  display: block;
+  stroke: #ff6600 !important;
+  transition: stroke 0.2s;
+}
+.carousel-arrow:hover svg {
+  stroke: #a259ff !important;
 }
 .carousel-arrow:hover {
-  background: #a259ff;
-  color: #fff;
+  background: none !important;
+  color: #a259ff;
 }
 
 .carousel-dots {
